@@ -1,0 +1,2350 @@
+[
+  {
+    "id": "behavior-1",
+    "operationId": "emailsSend",
+    "method": "POST",
+    "path": "/emails",
+    "signature": "{\"errors\":[],\"method\":\"POST\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"header\",\"required\":false,\"style\":\"simple\"}],\"request\":[\"json\"],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "header-serialization", "json-request", "json-response"],
+    "parameters": [
+      {
+        "name": "Idempotency-Key",
+        "location": "header",
+        "required": false,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "Idempotency-Key"
+      }
+    ],
+    "request": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "from": "from",
+        "to": "to",
+        "subject": "subject",
+        "bcc": "bcc",
+        "cc": "cc",
+        "reply_to": "reply_to",
+        "html": "html",
+        "text": "text",
+        "template": {
+          "id": "id-1",
+          "variables": {
+            "variableName": "Sign up now",
+            "variableName2": 123
+          }
+        },
+        "headers": {},
+        "scheduled_at": "2024-01-01T00:00:00Z",
+        "attachments": [
+          {
+            "content": "ZXhhbXBsZQ==",
+            "filename": "Example Name",
+            "path": "path",
+            "content_type": "content_type",
+            "content_id": "content-1"
+          }
+        ],
+        "tags": [
+          {
+            "name": "Example Name",
+            "value": "value"
+          }
+        ],
+        "topic_id": "topic-1"
+      }
+    },
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "id": "id-1"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-2",
+    "operationId": "emailsList",
+    "method": "GET",
+    "path": "/emails",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "query-serialization"],
+    "parameters": [
+      {
+        "name": "limit",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": 1
+      },
+      {
+        "name": "after",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "after"
+      },
+      {
+        "name": "before",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "before"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "list",
+        "has_more": false,
+        "data": [
+          {
+            "object": "email",
+            "id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+            "message_id": "<202301010000.4ef9a417@email.example.com>",
+            "to": ["delivered@resend.dev"],
+            "from": "Acme <onboarding@resend.dev>",
+            "created_at": "2023-04-03 22:13:42.674981+00",
+            "subject": "Hello World",
+            "html": "Congrats on sending your <strong>first email</strong>!",
+            "text": "text",
+            "bcc": ["bcc"],
+            "cc": ["cc"],
+            "reply_to": ["reply_to"],
+            "last_event": "delivered"
+          }
+        ]
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-3",
+    "operationId": "emailsGet",
+    "method": "GET",
+    "path": "/emails/{email_id}",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization"],
+    "parameters": [
+      {
+        "name": "email_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "email-1"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "email",
+        "id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+        "message_id": "<202301010000.4ef9a417@email.example.com>",
+        "to": ["delivered@resend.dev"],
+        "from": "Acme <onboarding@resend.dev>",
+        "created_at": "2023-04-03 22:13:42.674981+00",
+        "subject": "Hello World",
+        "html": "Congrats on sending your <strong>first email</strong>!",
+        "text": "text",
+        "bcc": ["bcc"],
+        "cc": ["cc"],
+        "reply_to": ["reply_to"],
+        "last_event": "delivered"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-4",
+    "operationId": "emailsUpdate",
+    "method": "PATCH",
+    "path": "/emails/{email_id}",
+    "signature": "{\"errors\":[],\"method\":\"PATCH\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization"],
+    "parameters": [
+      {
+        "name": "email_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "email-1"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "scheduled_at": "2024-01-01T00:00:00Z"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-5",
+    "operationId": "emailsCancel",
+    "method": "POST",
+    "path": "/emails/{email_id}/cancel",
+    "signature": "{\"errors\":[],\"method\":\"POST\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization"],
+    "parameters": [
+      {
+        "name": "email_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "email-1"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "email",
+        "id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+        "message_id": "<202301010000.4ef9a417@email.example.com>",
+        "to": ["delivered@resend.dev"],
+        "from": "Acme <onboarding@resend.dev>",
+        "created_at": "2023-04-03 22:13:42.674981+00",
+        "subject": "Hello World",
+        "html": "Congrats on sending your <strong>first email</strong>!",
+        "text": "text",
+        "bcc": ["bcc"],
+        "cc": ["cc"],
+        "reply_to": ["reply_to"],
+        "last_event": "delivered"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-6",
+    "operationId": "emailsShare",
+    "method": "POST",
+    "path": "/emails/{email_id}/share",
+    "signature": "{\"errors\":[],\"method\":\"POST\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[\"json\"],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-request", "json-response", "path-serialization"],
+    "parameters": [
+      {
+        "name": "email_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "email-1"
+      }
+    ],
+    "request": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "expires_in": "expires_in"
+      }
+    },
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "email",
+        "id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+        "url": "https://resend.com/shared?token=eyJhbGciOiJIUzI1NiJ9..."
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-7",
+    "operationId": "emailsListAttachments",
+    "method": "GET",
+    "path": "/emails/{email_id}/attachments",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+    "parameters": [
+      {
+        "name": "email_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "limit",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": 1
+      },
+      {
+        "name": "after",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "before",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "list",
+        "has_more": false,
+        "data": [
+          {
+            "id": "660e8400-e29b-41d4-a716-446655440000",
+            "filename": "document.pdf",
+            "content_type": "application/pdf",
+            "content_id": "img001",
+            "content_disposition": "attachment",
+            "download_url": "https://cloudfront.example.com/path?Signature=...",
+            "expires_at": "2024-10-27T18:30:00.000Z",
+            "size": 2048
+          }
+        ]
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-8",
+    "operationId": "emailsGetAttachment",
+    "method": "GET",
+    "path": "/emails/{email_id}/attachments/{attachment_id}",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization"],
+    "parameters": [
+      {
+        "name": "email_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "attachment_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "attachment",
+        "id": "660e8400-e29b-41d4-a716-446655440000",
+        "filename": "document.pdf",
+        "content_type": "application/pdf",
+        "content_id": "img001",
+        "content_disposition": "attachment",
+        "download_url": "https://cloudfront.example.com/path?Signature=...",
+        "expires_at": "2024-10-27T18:30:00.000Z",
+        "size": 2048
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-9",
+    "operationId": "getMetrics",
+    "method": "GET",
+    "path": "/emails/metrics",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":true,\"explode\":false,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":true,\"explode\":false,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":true,\"explode\":false,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":true,\"explode\":false,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":true,\"explode\":false,\"location\":\"query\",\"required\":false,\"style\":\"form\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "query-serialization"],
+    "parameters": [
+      {
+        "name": "start_date",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "2024-01-01T00:00:00Z"
+      },
+      {
+        "name": "end_date",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "2024-01-01T00:00:00Z"
+      },
+      {
+        "name": "timezone",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "UTC"
+      },
+      {
+        "name": "granularity",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "daily"
+      },
+      {
+        "name": "metrics",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "jsonContent": false,
+        "value": ["received"]
+      },
+      {
+        "name": "dimensions",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "jsonContent": false,
+        "value": ["period"]
+      },
+      {
+        "name": "domain_id",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "jsonContent": false,
+        "value": ["00000000-0000-4000-8000-000000000000"]
+      },
+      {
+        "name": "email_id",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "jsonContent": false,
+        "value": ["00000000-0000-4000-8000-000000000000"]
+      },
+      {
+        "name": "broadcast_id",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "jsonContent": false,
+        "value": ["00000000-0000-4000-8000-000000000000"]
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "metrics",
+        "start_date": "2026-07-01T00:00:00.000Z",
+        "end_date": "2026-07-08T00:00:00.000Z",
+        "metrics": ["metrics"],
+        "dimensions": ["period"],
+        "granularity": "hourly",
+        "totals": {
+          "key": 1
+        },
+        "data": [
+          {
+            "period": "period",
+            "domain_id": "00000000-0000-4000-8000-000000000000",
+            "domain_name": "Example Name",
+            "email_id": "00000000-0000-4000-8000-000000000000",
+            "broadcast_id": "00000000-0000-4000-8000-000000000000",
+            "broadcast_name": "Example Name"
+          }
+        ]
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-10",
+    "operationId": "domainsCreate",
+    "method": "POST",
+    "path": "/domains",
+    "signature": "{\"errors\":[],\"method\":\"POST\",\"nullable\":false,\"pagination\":null,\"parameters\":[],\"request\":[\"json\"],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-request", "json-response"],
+    "parameters": [],
+    "request": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "name": "Example Name",
+        "region": "us-east-1",
+        "custom_return_path": "custom_return_path",
+        "open_tracking": false,
+        "click_tracking": false,
+        "tls": "opportunistic",
+        "capabilities": {
+          "sending": "enabled",
+          "receiving": "enabled"
+        },
+        "tracking_subdomain": "tracking_subdomain"
+      }
+    },
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "id": "id-1",
+        "name": "Example Name",
+        "created_at": "2023-10-06 23:47:56.678+00",
+        "status": "pending",
+        "capabilities": {
+          "sending": "enabled",
+          "receiving": "enabled"
+        },
+        "records": [
+          {
+            "record": "SPF",
+            "name": "Example Name",
+            "type": "MX",
+            "ttl": "ttl",
+            "status": "pending",
+            "value": "value",
+            "priority": 1
+          }
+        ],
+        "region": "region",
+        "open_tracking": false,
+        "click_tracking": false,
+        "tracking_subdomain": "tracking_subdomain"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-11",
+    "operationId": "domainsUpdate",
+    "method": "PATCH",
+    "path": "/domains/{domain_id}",
+    "signature": "{\"errors\":[],\"method\":\"PATCH\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[\"json\"],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-request", "json-response", "path-serialization"],
+    "parameters": [
+      {
+        "name": "domain_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "domain-1"
+      }
+    ],
+    "request": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "open_tracking": false,
+        "click_tracking": false,
+        "tls": "opportunistic",
+        "capabilities": {
+          "sending": "enabled",
+          "receiving": "enabled"
+        },
+        "tracking_subdomain": "tracking_subdomain"
+      }
+    },
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "id": "d91cd9bd-1176-453e-8fc1-35364d380206",
+        "object": "domain"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-12",
+    "operationId": "domainsRemove",
+    "method": "DELETE",
+    "path": "/domains/{domain_id}",
+    "signature": "{\"errors\":[],\"method\":\"DELETE\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization"],
+    "parameters": [
+      {
+        "name": "domain_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "domain-1"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "domain",
+        "id": "d91cd9bd-1176-453e-8fc1-35364d380206",
+        "deleted": true
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-13",
+    "operationId": "domainsCreateClaim",
+    "method": "POST",
+    "path": "/domains/claim",
+    "signature": "{\"errors\":[],\"method\":\"POST\",\"nullable\":false,\"pagination\":null,\"parameters\":[],\"request\":[\"json\"],\"response\":[\"json\",\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-request", "json-response"],
+    "parameters": [],
+    "request": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "name": "Example Name",
+        "region": "us-east-1",
+        "custom_return_path": "send",
+        "open_tracking": false,
+        "click_tracking": false,
+        "tracking_subdomain": "tracking_subdomain"
+      }
+    },
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "domain_claim",
+        "id": "d91cd9bd-1176-453e-8fc1-35364d380206",
+        "name": "example.com",
+        "status": "pending",
+        "domain_id": "a1b2c3d4-1176-453e-8fc1-35364d380206",
+        "region": "us-east-1",
+        "record": {
+          "type": "TXT",
+          "name": "example.com",
+          "value": "resend-domain-verification=abc123",
+          "ttl": "Auto"
+        },
+        "blocked_reason": null,
+        "failure_reason": null,
+        "created_at": "2023-04-26 20:21:26.347412+00",
+        "expires_at": "2023-05-03 20:21:26.347412+00"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-14",
+    "operationId": "audiencesList",
+    "method": "GET",
+    "path": "/audiences",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response"],
+    "parameters": [],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "list",
+        "data": [
+          {
+            "id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+            "name": "Registered Users",
+            "created_at": "2023-10-06 22:59:55.977+00"
+          }
+        ]
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-15",
+    "operationId": "contactsCreateImport",
+    "method": "POST",
+    "path": "/contacts/imports",
+    "signature": "{\"errors\":[],\"method\":\"POST\",\"nullable\":false,\"pagination\":null,\"parameters\":[],\"request\":[\"multipart\"],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "multipart-request"],
+    "parameters": [],
+    "request": {
+      "mediaType": "multipart/form-data",
+      "kind": "multipart",
+      "value": {
+        "file": "ZXhhbXBsZQ==",
+        "column_map": "{\"email\":\"Email\",\"first_name\":\"First Name\",\"last_name\":\"Last Name\",\"unsubscribed\":\"Unsubscribed\",\"properties\":{\"plan\":{\"column\":\"Plan\",\"type\":\"string\"}}}",
+        "on_conflict": "skip",
+        "segments": "[{\"id\":\"78261eea-8f8b-4381-83c6-79fa7120f1cf\"}]",
+        "topics": "[{\"id\":\"b6d24b8e-af0b-4c3c-be0c-359bbd97381e\",\"subscription\":\"opt_in\"}]"
+      }
+    },
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "contact_import",
+        "id": "479e3145-dd38-476b-932c-529ceb705947"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-16",
+    "operationId": "contactsListImports",
+    "method": "GET",
+    "path": "/contacts/imports",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "query-serialization"],
+    "parameters": [
+      {
+        "name": "status",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "queued"
+      },
+      {
+        "name": "limit",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": 1
+      },
+      {
+        "name": "after",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "after"
+      },
+      {
+        "name": "before",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "before"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "list",
+        "has_more": false,
+        "data": [
+          {
+            "object": "contact_import",
+            "id": "479e3145-dd38-476b-932c-529ceb705947",
+            "status": "completed",
+            "created_at": "2023-10-06 23:47:56.678+00",
+            "completed_at": "2023-10-06 23:50:56.678+00",
+            "counts": {
+              "total": 100,
+              "created": 80,
+              "updated": 10,
+              "skipped": 5,
+              "failed": 5
+            }
+          }
+        ]
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-17",
+    "operationId": "listRecipients",
+    "method": "GET",
+    "path": "/broadcasts/{id}/recipients",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":true,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+    "parameters": [
+      {
+        "name": "id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "type",
+        "location": "query",
+        "required": true,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "sent"
+      },
+      {
+        "name": "email",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "user@example.com"
+      },
+      {
+        "name": "bounce_type",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "permanent"
+      },
+      {
+        "name": "limit",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": 1
+      },
+      {
+        "name": "after",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "after"
+      },
+      {
+        "name": "before",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "before"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "list",
+        "has_more": false,
+        "data": [
+          {
+            "id": "b2Zmc2V0OjA",
+            "contact_id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
+            "email": "steve.wozniak@gmail.com",
+            "count": 3,
+            "bounce_type": "permanent",
+            "clicked_links": [
+              {
+                "url": "https://resend.com/pricing",
+                "clicks": 2
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-18",
+    "operationId": "webhooksListEvents",
+    "method": "GET",
+    "path": "/webhooks/{webhook_id}/events",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+    "parameters": [
+      {
+        "name": "webhook_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "limit",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": 1
+      },
+      {
+        "name": "after",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "after"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "list",
+        "has_more": false,
+        "data": [
+          {
+            "id": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2",
+            "type": "email.sent",
+            "created_at": "2026-08-22T15:28:00.000Z",
+            "status": "success"
+          }
+        ]
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-19",
+    "operationId": "webhooksReplayEvent",
+    "method": "POST",
+    "path": "/webhooks/{webhook_id}/events/{event_id}/replay",
+    "signature": "{\"errors\":[],\"method\":\"POST\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization"],
+    "parameters": [
+      {
+        "name": "webhook_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "event_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "event-1"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "webhook_event",
+        "id": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-20",
+    "operationId": "webhooksListEventAttempts",
+    "method": "GET",
+    "path": "/webhooks/{webhook_id}/events/{event_id}/attempts",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+    "parameters": [
+      {
+        "name": "webhook_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "event_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "event-1"
+      },
+      {
+        "name": "limit",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": 1
+      },
+      {
+        "name": "after",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "after"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "list",
+        "has_more": false,
+        "data": [
+          {
+            "id": "atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2",
+            "http_status_code": 200,
+            "response": "{\"ok\":true}",
+            "sent_at": "2026-08-22T15:33:12.000Z"
+          }
+        ]
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-21",
+    "operationId": "contactsRemoveSegment",
+    "method": "DELETE",
+    "path": "/contacts/{contact_id}/segments/{segment_id}",
+    "signature": "{\"errors\":[],\"method\":\"DELETE\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization"],
+    "parameters": [
+      {
+        "name": "contact_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "contact-1"
+      },
+      {
+        "name": "segment_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "segment-1"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "contact_segment",
+        "contact_id": "contact-1",
+        "segment_id": "segment-1",
+        "deleted": true
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-22",
+    "operationId": "automationsListRuns",
+    "method": "GET",
+    "path": "/automations/{automation_id}/runs",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+    "parameters": [
+      {
+        "name": "automation_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "status",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "active"
+      },
+      {
+        "name": "limit",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": 1
+      },
+      {
+        "name": "after",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "after"
+      },
+      {
+        "name": "before",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "before"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "list",
+        "has_more": false,
+        "data": [
+          {
+            "id": "id-1",
+            "status": "running",
+            "started_at": "2023-10-06 23:47:56.678+00",
+            "completed_at": "2023-10-06 23:47:56.678+00",
+            "created_at": "2023-10-06 23:47:56.678+00"
+          }
+        ]
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-23",
+    "operationId": "inboxesUpdateLabel",
+    "method": "PATCH",
+    "path": "/inboxes/{inbox_id}/labels/{label_id}",
+    "signature": "{\"errors\":[],\"method\":\"PATCH\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[\"json\"],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-request", "json-response", "path-serialization"],
+    "parameters": [
+      {
+        "name": "inbox_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "label_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      }
+    ],
+    "request": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "name": "Billing",
+        "color": "#F76B15"
+      }
+    },
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "inbox_label",
+        "id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-24",
+    "operationId": "inboxesListThreads",
+    "method": "GET",
+    "path": "/inboxes/{inbox_id}/threads",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":true,\"explode\":false,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":true,\"explode\":false,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+    "parameters": [
+      {
+        "name": "inbox_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "folders",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "jsonContent": false,
+        "value": ["inbox"]
+      },
+      {
+        "name": "labels",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "jsonContent": false,
+        "value": ["00000000-0000-4000-8000-000000000000"]
+      },
+      {
+        "name": "read",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": false
+      },
+      {
+        "name": "limit",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": 1
+      },
+      {
+        "name": "after",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "after"
+      },
+      {
+        "name": "before",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "before"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "list",
+        "has_more": true,
+        "data": [
+          {
+            "id": "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+            "subject": "Refund for order 1041",
+            "from": "ada@example.org",
+            "to": ["support@example.com"],
+            "cc": [],
+            "bcc": [],
+            "labels": [
+              {
+                "id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
+                "name": "Urgent",
+                "color": "#E93D82"
+              }
+            ],
+            "email_count": 2,
+            "has_attachment": true,
+            "has_draft": false,
+            "read": false,
+            "received_at": "2026-08-05T14:03:11.229Z",
+            "folder": "inbox"
+          }
+        ]
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-25",
+    "operationId": "inboxesSearchThreads",
+    "method": "GET",
+    "path": "/inboxes/{inbox_id}/threads/search",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":true,\"explode\":false,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":true,\"explode\":false,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":true,\"explode\":false,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":true,\"explode\":false,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":true,\"explode\":false,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":true,\"explode\":false,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+    "parameters": [
+      {
+        "name": "inbox_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "query",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "query"
+      },
+      {
+        "name": "from",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "jsonContent": false,
+        "value": ["from"]
+      },
+      {
+        "name": "to",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "jsonContent": false,
+        "value": ["to"]
+      },
+      {
+        "name": "cc",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "jsonContent": false,
+        "value": ["cc"]
+      },
+      {
+        "name": "bcc",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "jsonContent": false,
+        "value": ["bcc"]
+      },
+      {
+        "name": "has_attachment",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": false
+      },
+      {
+        "name": "start_date",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "2024-01-01T00:00:00Z"
+      },
+      {
+        "name": "end_date",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "2024-01-01T00:00:00Z"
+      },
+      {
+        "name": "folders",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "jsonContent": false,
+        "value": ["inbox"]
+      },
+      {
+        "name": "labels",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": false,
+        "jsonContent": false,
+        "value": ["00000000-0000-4000-8000-000000000000"]
+      },
+      {
+        "name": "read",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": false
+      },
+      {
+        "name": "limit",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": 1
+      },
+      {
+        "name": "after",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "after"
+      },
+      {
+        "name": "before",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "before"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "list",
+        "has_more": true,
+        "data": [
+          {
+            "id": "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+            "subject": "Refund for order 1041",
+            "from": "ada@example.org",
+            "to": ["support@example.com"],
+            "cc": [],
+            "bcc": [],
+            "labels": [
+              {
+                "id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
+                "name": "Urgent",
+                "color": "#E93D82"
+              }
+            ],
+            "email_count": 2,
+            "has_attachment": true,
+            "has_draft": false,
+            "read": false,
+            "received_at": "2026-08-05T14:03:11.229Z",
+            "folder": "inbox",
+            "matched_email_id": "e8a3f1c6-2b9d-4e5a-a7c4-9d1b6f3e2a80",
+            "highlights": {
+              "subject": ["September **invoice**"],
+              "attachments": ["**invoice**-2026-09.pdf"]
+            }
+          }
+        ]
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-26",
+    "operationId": "inboxesListThreadEmails",
+    "method": "GET",
+    "path": "/inboxes/{inbox_id}/threads/{thread_id}/emails",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"},{\"array\":false,\"explode\":true,\"location\":\"query\",\"required\":false,\"style\":\"form\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+    "parameters": [
+      {
+        "name": "inbox_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "thread_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "limit",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": 1
+      },
+      {
+        "name": "after",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "after"
+      },
+      {
+        "name": "before",
+        "location": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "jsonContent": false,
+        "value": "before"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "list",
+        "has_more": false,
+        "data": [
+          {
+            "id": "5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60",
+            "direction": "inbound",
+            "from": "Ada Lovelace <ada@example.org>",
+            "to": ["support@acme.com"],
+            "cc": [],
+            "bcc": [],
+            "reply_to": ["replies@example.org"],
+            "subject": "Refund for order 1041",
+            "message_id": "<1041@example.org>",
+            "html": "<p>Could I get a refund for order 1041?</p>",
+            "text": "Could I get a refund for order 1041?",
+            "attachments": [
+              {
+                "id": "9d4f2b81-6c3a-4e7d-8b12-0a5c6d7e8f90",
+                "filename": "receipt.pdf",
+                "size": 20841
+              }
+            ],
+            "read": false,
+            "received_at": "2026-08-05T14:03:11.229Z"
+          }
+        ]
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-27",
+    "operationId": "inboxesGetThreadEmail",
+    "method": "GET",
+    "path": "/inboxes/{inbox_id}/threads/{thread_id}/emails/{email_id}",
+    "signature": "{\"errors\":[],\"method\":\"GET\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": ["auth-application", "json-response", "path-serialization"],
+    "parameters": [
+      {
+        "name": "inbox_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "thread_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "email_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      }
+    ],
+    "request": null,
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "id": "5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60",
+        "direction": "inbound",
+        "from": "Ada Lovelace <ada@example.org>",
+        "to": ["support@acme.com"],
+        "cc": [],
+        "bcc": [],
+        "reply_to": ["replies@example.org"],
+        "subject": "Refund for order 1041",
+        "message_id": "<1041@example.org>",
+        "html": "<p>Could I get a refund for order 1041?</p>",
+        "text": "Could I get a refund for order 1041?",
+        "attachments": [
+          {
+            "id": "9d4f2b81-6c3a-4e7d-8b12-0a5c6d7e8f90",
+            "filename": "receipt.pdf",
+            "size": 20841
+          }
+        ],
+        "read": false,
+        "received_at": "2026-08-05T14:03:11.229Z"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-28",
+    "operationId": "inboxesReplyThreadEmail",
+    "method": "POST",
+    "path": "/inboxes/{inbox_id}/threads/{thread_id}/emails/{email_id}/reply",
+    "signature": "{\"errors\":[],\"method\":\"POST\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"header\",\"required\":false,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[\"json\"],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": [
+      "auth-application",
+      "header-serialization",
+      "json-request",
+      "json-response",
+      "path-serialization"
+    ],
+    "parameters": [
+      {
+        "name": "Idempotency-Key",
+        "location": "header",
+        "required": false,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "x"
+      },
+      {
+        "name": "inbox_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "thread_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "email_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      }
+    ],
+    "request": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "cc": ["billing@acme.com"],
+        "bcc": ["records@acme.com"],
+        "html": "<p>Refund issued for order 1041.</p>",
+        "text": "Refund issued for order 1041.",
+        "subject": "Re: Refund for order 1041",
+        "reply_all": false,
+        "attachments": [
+          {
+            "content": "ZXhhbXBsZQ==",
+            "filename": "Example Name",
+            "path": "path",
+            "content_type": "content_type",
+            "content_id": "content-1"
+          }
+        ],
+        "headers": {
+          "X-Ticket-Id": "4821"
+        }
+      }
+    },
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "id": "6a0c8e58-3d9e-4f7a-8b14-2e3f4a5b6c71"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-29",
+    "operationId": "inboxesCreateDraft",
+    "method": "POST",
+    "path": "/inboxes/{inbox_id}/drafts",
+    "signature": "{\"errors\":[],\"method\":\"POST\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"header\",\"required\":false,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[\"json\"],\"response\":[\"json\",\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": [
+      "auth-application",
+      "header-serialization",
+      "json-request",
+      "json-response",
+      "path-serialization"
+    ],
+    "parameters": [
+      {
+        "name": "Idempotency-Key",
+        "location": "header",
+        "required": false,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "x"
+      },
+      {
+        "name": "inbox_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      }
+    ],
+    "request": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "to": ["ada@example.org"],
+        "cc": "cc",
+        "bcc": "bcc",
+        "subject": "Refund for order 1041",
+        "html": "<p>Refund issued for order 1041.</p>",
+        "text": "Refund issued for order 1041.",
+        "attachments": [
+          {
+            "content": "aGVsbG8gZTJl",
+            "filename": "receipt.pdf",
+            "content_type": "application/pdf"
+          }
+        ],
+        "thread_id": "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+        "reply_to_email_id": "5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60"
+      }
+    },
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "object": "inbox_draft",
+        "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  },
+  {
+    "id": "behavior-30",
+    "operationId": "inboxesSendDraft",
+    "method": "POST",
+    "path": "/inboxes/{inbox_id}/drafts/{draft_id}/send",
+    "signature": "{\"errors\":[],\"method\":\"POST\",\"nullable\":false,\"pagination\":null,\"parameters\":[{\"array\":false,\"explode\":false,\"location\":\"header\",\"required\":false,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"},{\"array\":false,\"explode\":false,\"location\":\"path\",\"required\":true,\"style\":\"simple\"}],\"request\":[\"json\"],\"response\":[\"json\"],\"security\":[{\"bearerAuth\":[]}],\"streaming\":false}",
+    "kinds": [
+      "auth-application",
+      "header-serialization",
+      "json-request",
+      "json-response",
+      "path-serialization"
+    ],
+    "parameters": [
+      {
+        "name": "Idempotency-Key",
+        "location": "header",
+        "required": false,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "x"
+      },
+      {
+        "name": "inbox_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      },
+      {
+        "name": "draft_id",
+        "location": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "jsonContent": false,
+        "value": "00000000-0000-4000-8000-000000000000"
+      }
+    ],
+    "request": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "headers": {
+          "X-Ticket-Id": "4821"
+        }
+      }
+    },
+    "response": {
+      "mediaType": "application/json",
+      "kind": "json",
+      "value": {
+        "id": "6a0c8e58-3d9e-4f7a-8b14-2e3f4a5b6c71"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "securitySchemes": [
+      {
+        "name": "bearerAuth",
+        "fieldName": "bearerAuth",
+        "scheme": {
+          "type": "http",
+          "scheme": "bearer"
+        },
+        "genericBearerFieldName": "bearerAuth"
+      }
+    ],
+    "pagination": null
+  }
+]

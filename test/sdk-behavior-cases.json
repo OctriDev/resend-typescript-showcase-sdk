@@ -1,0 +1,2255 @@
+{
+  "baseUrl": "https://behavior.test",
+  "operationCount": 139,
+  "credentials": {
+    "bearer": "behavior-bearer-token",
+    "apiKey": "behavior-api-key",
+    "basicUser": "behavior-user",
+    "basicPassword": "behavior-password",
+    "basicHeader": "Basic YmVoYXZpb3ItdXNlcjpiZWhhdmlvci1wYXNzd29yZA=="
+  },
+  "authHeaders": {},
+  "cases": [
+    {
+      "id": "behavior-1",
+      "operationId": "emailsSend",
+      "kinds": ["auth-application", "header-serialization", "json-request", "json-response"],
+      "request": {
+        "method": "POST",
+        "pathTemplate": "/emails",
+        "pathParameters": {},
+        "query": [],
+        "headers": {
+          "idempotency-key": "Idempotency-Key"
+        },
+        "body": {
+          "from": "from",
+          "to": "to",
+          "subject": "subject",
+          "bcc": "bcc",
+          "cc": "cc",
+          "reply_to": "reply_to",
+          "html": "html",
+          "text": "text",
+          "template": {
+            "id": "id-1",
+            "variables": {
+              "variableName": "Sign up now",
+              "variableName2": 123
+            }
+          },
+          "headers": {},
+          "scheduled_at": "2024-01-01T00:00:00Z",
+          "attachments": [
+            {
+              "content": "ZXhhbXBsZQ==",
+              "filename": "Example Name",
+              "path": "path",
+              "content_type": "content_type",
+              "content_id": "content-1"
+            }
+          ],
+          "tags": [
+            {
+              "name": "Example Name",
+              "value": "value"
+            }
+          ],
+          "topic_id": "topic-1"
+        },
+        "bodyKind": "json",
+        "contentType": "application/json",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "POST",
+        "path": "/emails",
+        "query": "",
+        "url": "https://behavior.test/emails",
+        "headers": {
+          "idempotency-key": "Idempotency-Key",
+          "content-type": "application/json"
+        },
+        "bodyText": "{\"from\":\"from\",\"to\":\"to\",\"subject\":\"subject\",\"bcc\":\"bcc\",\"cc\":\"cc\",\"reply_to\":\"reply_to\",\"html\":\"html\",\"text\":\"text\",\"template\":{\"id\":\"id-1\",\"variables\":{\"variableName\":\"Sign up now\",\"variableName2\":123}},\"headers\":{},\"scheduled_at\":\"2024-01-01T00:00:00Z\",\"attachments\":[{\"content\":\"ZXhhbXBsZQ==\",\"filename\":\"Example Name\",\"path\":\"path\",\"content_type\":\"content_type\",\"content_id\":\"content-1\"}],\"tags\":[{\"name\":\"Example Name\",\"value\":\"value\"}],\"topic_id\":\"topic-1\"}",
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"id\":\"id-1\"}",
+        "value": {
+          "id": "id-1"
+        }
+      }
+    },
+    {
+      "id": "behavior-2",
+      "operationId": "emailsList",
+      "kinds": ["auth-application", "json-response", "query-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/emails",
+        "pathParameters": {},
+        "query": [
+          {
+            "name": "limit",
+            "style": "form",
+            "explode": true,
+            "value": 1,
+            "serialized": "1"
+          },
+          {
+            "name": "after",
+            "style": "form",
+            "explode": true,
+            "value": "after",
+            "serialized": "after"
+          },
+          {
+            "name": "before",
+            "style": "form",
+            "explode": true,
+            "value": "before",
+            "serialized": "before"
+          }
+        ],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/emails",
+        "query": "limit=1&after=after&before=before",
+        "url": "https://behavior.test/emails?limit=1&after=after&before=before",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"list\",\"has_more\":false,\"data\":[{\"object\":\"email\",\"id\":\"4ef9a417-02e9-4d39-ad75-9611e0fcc33c\",\"message_id\":\"<202301010000.4ef9a417@email.example.com>\",\"to\":[\"delivered@resend.dev\"],\"from\":\"Acme <onboarding@resend.dev>\",\"created_at\":\"2023-04-03 22:13:42.674981+00\",\"subject\":\"Hello World\",\"html\":\"Congrats on sending your <strong>first email</strong>!\",\"text\":\"text\",\"bcc\":[\"bcc\"],\"cc\":[\"cc\"],\"reply_to\":[\"reply_to\"],\"last_event\":\"delivered\"}]}",
+        "value": {
+          "object": "list",
+          "has_more": false,
+          "data": [
+            {
+              "object": "email",
+              "id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+              "message_id": "<202301010000.4ef9a417@email.example.com>",
+              "to": ["delivered@resend.dev"],
+              "from": "Acme <onboarding@resend.dev>",
+              "created_at": "2023-04-03 22:13:42.674981+00",
+              "subject": "Hello World",
+              "html": "Congrats on sending your <strong>first email</strong>!",
+              "text": "text",
+              "bcc": ["bcc"],
+              "cc": ["cc"],
+              "reply_to": ["reply_to"],
+              "last_event": "delivered"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "behavior-3",
+      "operationId": "emailsGet",
+      "kinds": ["auth-application", "json-response", "path-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/emails/{email_id}",
+        "pathParameters": {
+          "email_id": "email-1"
+        },
+        "query": [],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/emails/email-1",
+        "query": "",
+        "url": "https://behavior.test/emails/email-1",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"email\",\"id\":\"4ef9a417-02e9-4d39-ad75-9611e0fcc33c\",\"message_id\":\"<202301010000.4ef9a417@email.example.com>\",\"to\":[\"delivered@resend.dev\"],\"from\":\"Acme <onboarding@resend.dev>\",\"created_at\":\"2023-04-03 22:13:42.674981+00\",\"subject\":\"Hello World\",\"html\":\"Congrats on sending your <strong>first email</strong>!\",\"text\":\"text\",\"bcc\":[\"bcc\"],\"cc\":[\"cc\"],\"reply_to\":[\"reply_to\"],\"last_event\":\"delivered\"}",
+        "value": {
+          "object": "email",
+          "id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+          "message_id": "<202301010000.4ef9a417@email.example.com>",
+          "to": ["delivered@resend.dev"],
+          "from": "Acme <onboarding@resend.dev>",
+          "created_at": "2023-04-03 22:13:42.674981+00",
+          "subject": "Hello World",
+          "html": "Congrats on sending your <strong>first email</strong>!",
+          "text": "text",
+          "bcc": ["bcc"],
+          "cc": ["cc"],
+          "reply_to": ["reply_to"],
+          "last_event": "delivered"
+        }
+      }
+    },
+    {
+      "id": "behavior-4",
+      "operationId": "emailsUpdate",
+      "kinds": ["auth-application", "json-response", "path-serialization"],
+      "request": {
+        "method": "PATCH",
+        "pathTemplate": "/emails/{email_id}",
+        "pathParameters": {
+          "email_id": "email-1"
+        },
+        "query": [],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "PATCH",
+        "path": "/emails/email-1",
+        "query": "",
+        "url": "https://behavior.test/emails/email-1",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"scheduled_at\":\"2024-01-01T00:00:00Z\"}",
+        "value": {
+          "scheduled_at": "2024-01-01T00:00:00Z"
+        }
+      }
+    },
+    {
+      "id": "behavior-5",
+      "operationId": "emailsCancel",
+      "kinds": ["auth-application", "json-response", "path-serialization"],
+      "request": {
+        "method": "POST",
+        "pathTemplate": "/emails/{email_id}/cancel",
+        "pathParameters": {
+          "email_id": "email-1"
+        },
+        "query": [],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "POST",
+        "path": "/emails/email-1/cancel",
+        "query": "",
+        "url": "https://behavior.test/emails/email-1/cancel",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"email\",\"id\":\"4ef9a417-02e9-4d39-ad75-9611e0fcc33c\",\"message_id\":\"<202301010000.4ef9a417@email.example.com>\",\"to\":[\"delivered@resend.dev\"],\"from\":\"Acme <onboarding@resend.dev>\",\"created_at\":\"2023-04-03 22:13:42.674981+00\",\"subject\":\"Hello World\",\"html\":\"Congrats on sending your <strong>first email</strong>!\",\"text\":\"text\",\"bcc\":[\"bcc\"],\"cc\":[\"cc\"],\"reply_to\":[\"reply_to\"],\"last_event\":\"delivered\"}",
+        "value": {
+          "object": "email",
+          "id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+          "message_id": "<202301010000.4ef9a417@email.example.com>",
+          "to": ["delivered@resend.dev"],
+          "from": "Acme <onboarding@resend.dev>",
+          "created_at": "2023-04-03 22:13:42.674981+00",
+          "subject": "Hello World",
+          "html": "Congrats on sending your <strong>first email</strong>!",
+          "text": "text",
+          "bcc": ["bcc"],
+          "cc": ["cc"],
+          "reply_to": ["reply_to"],
+          "last_event": "delivered"
+        }
+      }
+    },
+    {
+      "id": "behavior-6",
+      "operationId": "emailsShare",
+      "kinds": ["auth-application", "json-request", "json-response", "path-serialization"],
+      "request": {
+        "method": "POST",
+        "pathTemplate": "/emails/{email_id}/share",
+        "pathParameters": {
+          "email_id": "email-1"
+        },
+        "query": [],
+        "headers": {},
+        "body": {
+          "expires_in": "expires_in"
+        },
+        "bodyKind": "json",
+        "contentType": "application/json",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "POST",
+        "path": "/emails/email-1/share",
+        "query": "",
+        "url": "https://behavior.test/emails/email-1/share",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "bodyText": "{\"expires_in\":\"expires_in\"}",
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"email\",\"id\":\"4ef9a417-02e9-4d39-ad75-9611e0fcc33c\",\"url\":\"https://resend.com/shared?token=eyJhbGciOiJIUzI1NiJ9...\"}",
+        "value": {
+          "object": "email",
+          "id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+          "url": "https://resend.com/shared?token=eyJhbGciOiJIUzI1NiJ9..."
+        }
+      }
+    },
+    {
+      "id": "behavior-7",
+      "operationId": "emailsListAttachments",
+      "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/emails/{email_id}/attachments",
+        "pathParameters": {
+          "email_id": "00000000-0000-4000-8000-000000000000"
+        },
+        "query": [
+          {
+            "name": "limit",
+            "style": "form",
+            "explode": true,
+            "value": 1,
+            "serialized": "1"
+          },
+          {
+            "name": "after",
+            "style": "form",
+            "explode": true,
+            "value": "00000000-0000-4000-8000-000000000000",
+            "serialized": "00000000-0000-4000-8000-000000000000"
+          },
+          {
+            "name": "before",
+            "style": "form",
+            "explode": true,
+            "value": "00000000-0000-4000-8000-000000000000",
+            "serialized": "00000000-0000-4000-8000-000000000000"
+          }
+        ],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/emails/00000000-0000-4000-8000-000000000000/attachments",
+        "query": "limit=1&after=00000000-0000-4000-8000-000000000000&before=00000000-0000-4000-8000-000000000000",
+        "url": "https://behavior.test/emails/00000000-0000-4000-8000-000000000000/attachments?limit=1&after=00000000-0000-4000-8000-000000000000&before=00000000-0000-4000-8000-000000000000",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"list\",\"has_more\":false,\"data\":[{\"id\":\"660e8400-e29b-41d4-a716-446655440000\",\"filename\":\"document.pdf\",\"content_type\":\"application/pdf\",\"content_id\":\"img001\",\"content_disposition\":\"attachment\",\"download_url\":\"https://cloudfront.example.com/path?Signature=...\",\"expires_at\":\"2024-10-27T18:30:00.000Z\",\"size\":2048}]}",
+        "value": {
+          "object": "list",
+          "has_more": false,
+          "data": [
+            {
+              "id": "660e8400-e29b-41d4-a716-446655440000",
+              "filename": "document.pdf",
+              "content_type": "application/pdf",
+              "content_id": "img001",
+              "content_disposition": "attachment",
+              "download_url": "https://cloudfront.example.com/path?Signature=...",
+              "expires_at": "2024-10-27T18:30:00.000Z",
+              "size": 2048
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "behavior-8",
+      "operationId": "emailsGetAttachment",
+      "kinds": ["auth-application", "json-response", "path-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/emails/{email_id}/attachments/{attachment_id}",
+        "pathParameters": {
+          "email_id": "00000000-0000-4000-8000-000000000000",
+          "attachment_id": "00000000-0000-4000-8000-000000000000"
+        },
+        "query": [],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/emails/00000000-0000-4000-8000-000000000000/attachments/00000000-0000-4000-8000-000000000000",
+        "query": "",
+        "url": "https://behavior.test/emails/00000000-0000-4000-8000-000000000000/attachments/00000000-0000-4000-8000-000000000000",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"attachment\",\"id\":\"660e8400-e29b-41d4-a716-446655440000\",\"filename\":\"document.pdf\",\"content_type\":\"application/pdf\",\"content_id\":\"img001\",\"content_disposition\":\"attachment\",\"download_url\":\"https://cloudfront.example.com/path?Signature=...\",\"expires_at\":\"2024-10-27T18:30:00.000Z\",\"size\":2048}",
+        "value": {
+          "object": "attachment",
+          "id": "660e8400-e29b-41d4-a716-446655440000",
+          "filename": "document.pdf",
+          "content_type": "application/pdf",
+          "content_id": "img001",
+          "content_disposition": "attachment",
+          "download_url": "https://cloudfront.example.com/path?Signature=...",
+          "expires_at": "2024-10-27T18:30:00.000Z",
+          "size": 2048
+        }
+      }
+    },
+    {
+      "id": "behavior-9",
+      "operationId": "getMetrics",
+      "kinds": ["auth-application", "json-response", "query-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/emails/metrics",
+        "pathParameters": {},
+        "query": [
+          {
+            "name": "start_date",
+            "style": "form",
+            "explode": true,
+            "value": "2024-01-01T00:00:00Z",
+            "serialized": "2024-01-01T00:00:00Z"
+          },
+          {
+            "name": "end_date",
+            "style": "form",
+            "explode": true,
+            "value": "2024-01-01T00:00:00Z",
+            "serialized": "2024-01-01T00:00:00Z"
+          },
+          {
+            "name": "timezone",
+            "style": "form",
+            "explode": true,
+            "value": "UTC",
+            "serialized": "UTC"
+          },
+          {
+            "name": "granularity",
+            "style": "form",
+            "explode": true,
+            "value": "daily",
+            "serialized": "daily"
+          },
+          {
+            "name": "metrics",
+            "style": "form",
+            "explode": false,
+            "value": ["received"],
+            "serialized": "received"
+          },
+          {
+            "name": "dimensions",
+            "style": "form",
+            "explode": false,
+            "value": ["period"],
+            "serialized": "period"
+          },
+          {
+            "name": "domain_id",
+            "style": "form",
+            "explode": false,
+            "value": ["00000000-0000-4000-8000-000000000000"],
+            "serialized": "00000000-0000-4000-8000-000000000000"
+          },
+          {
+            "name": "email_id",
+            "style": "form",
+            "explode": false,
+            "value": ["00000000-0000-4000-8000-000000000000"],
+            "serialized": "00000000-0000-4000-8000-000000000000"
+          },
+          {
+            "name": "broadcast_id",
+            "style": "form",
+            "explode": false,
+            "value": ["00000000-0000-4000-8000-000000000000"],
+            "serialized": "00000000-0000-4000-8000-000000000000"
+          }
+        ],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/emails/metrics",
+        "query": "start_date=2024-01-01T00%3A00%3A00Z&end_date=2024-01-01T00%3A00%3A00Z&timezone=UTC&granularity=daily&metrics=received&dimensions=period&domain_id=00000000-0000-4000-8000-000000000000&email_id=00000000-0000-4000-8000-000000000000&broadcast_id=00000000-0000-4000-8000-000000000000",
+        "url": "https://behavior.test/emails/metrics?start_date=2024-01-01T00%3A00%3A00Z&end_date=2024-01-01T00%3A00%3A00Z&timezone=UTC&granularity=daily&metrics=received&dimensions=period&domain_id=00000000-0000-4000-8000-000000000000&email_id=00000000-0000-4000-8000-000000000000&broadcast_id=00000000-0000-4000-8000-000000000000",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"metrics\",\"start_date\":\"2026-07-01T00:00:00.000Z\",\"end_date\":\"2026-07-08T00:00:00.000Z\",\"metrics\":[\"metrics\"],\"dimensions\":[\"period\"],\"granularity\":\"hourly\",\"totals\":{\"key\":1},\"data\":[{\"period\":\"period\",\"domain_id\":\"00000000-0000-4000-8000-000000000000\",\"domain_name\":\"Example Name\",\"email_id\":\"00000000-0000-4000-8000-000000000000\",\"broadcast_id\":\"00000000-0000-4000-8000-000000000000\",\"broadcast_name\":\"Example Name\"}]}",
+        "value": {
+          "object": "metrics",
+          "start_date": "2026-07-01T00:00:00.000Z",
+          "end_date": "2026-07-08T00:00:00.000Z",
+          "metrics": ["metrics"],
+          "dimensions": ["period"],
+          "granularity": "hourly",
+          "totals": {
+            "key": 1
+          },
+          "data": [
+            {
+              "period": "period",
+              "domain_id": "00000000-0000-4000-8000-000000000000",
+              "domain_name": "Example Name",
+              "email_id": "00000000-0000-4000-8000-000000000000",
+              "broadcast_id": "00000000-0000-4000-8000-000000000000",
+              "broadcast_name": "Example Name"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "behavior-10",
+      "operationId": "domainsCreate",
+      "kinds": ["auth-application", "json-request", "json-response"],
+      "request": {
+        "method": "POST",
+        "pathTemplate": "/domains",
+        "pathParameters": {},
+        "query": [],
+        "headers": {},
+        "body": {
+          "name": "Example Name",
+          "region": "us-east-1",
+          "custom_return_path": "custom_return_path",
+          "open_tracking": false,
+          "click_tracking": false,
+          "tls": "opportunistic",
+          "capabilities": {
+            "sending": "enabled",
+            "receiving": "enabled"
+          },
+          "tracking_subdomain": "tracking_subdomain"
+        },
+        "bodyKind": "json",
+        "contentType": "application/json",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "POST",
+        "path": "/domains",
+        "query": "",
+        "url": "https://behavior.test/domains",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "bodyText": "{\"name\":\"Example Name\",\"region\":\"us-east-1\",\"custom_return_path\":\"custom_return_path\",\"open_tracking\":false,\"click_tracking\":false,\"tls\":\"opportunistic\",\"capabilities\":{\"sending\":\"enabled\",\"receiving\":\"enabled\"},\"tracking_subdomain\":\"tracking_subdomain\"}",
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"id\":\"id-1\",\"name\":\"Example Name\",\"created_at\":\"2023-10-06 23:47:56.678+00\",\"status\":\"pending\",\"capabilities\":{\"sending\":\"enabled\",\"receiving\":\"enabled\"},\"records\":[{\"record\":\"SPF\",\"name\":\"Example Name\",\"type\":\"MX\",\"ttl\":\"ttl\",\"status\":\"pending\",\"value\":\"value\",\"priority\":1}],\"region\":\"region\",\"open_tracking\":false,\"click_tracking\":false,\"tracking_subdomain\":\"tracking_subdomain\"}",
+        "value": {
+          "id": "id-1",
+          "name": "Example Name",
+          "created_at": "2023-10-06 23:47:56.678+00",
+          "status": "pending",
+          "capabilities": {
+            "sending": "enabled",
+            "receiving": "enabled"
+          },
+          "records": [
+            {
+              "record": "SPF",
+              "name": "Example Name",
+              "type": "MX",
+              "ttl": "ttl",
+              "status": "pending",
+              "value": "value",
+              "priority": 1
+            }
+          ],
+          "region": "region",
+          "open_tracking": false,
+          "click_tracking": false,
+          "tracking_subdomain": "tracking_subdomain"
+        }
+      }
+    },
+    {
+      "id": "behavior-11",
+      "operationId": "domainsUpdate",
+      "kinds": ["auth-application", "json-request", "json-response", "path-serialization"],
+      "request": {
+        "method": "PATCH",
+        "pathTemplate": "/domains/{domain_id}",
+        "pathParameters": {
+          "domain_id": "domain-1"
+        },
+        "query": [],
+        "headers": {},
+        "body": {
+          "open_tracking": false,
+          "click_tracking": false,
+          "tls": "opportunistic",
+          "capabilities": {
+            "sending": "enabled",
+            "receiving": "enabled"
+          },
+          "tracking_subdomain": "tracking_subdomain"
+        },
+        "bodyKind": "json",
+        "contentType": "application/json",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "PATCH",
+        "path": "/domains/domain-1",
+        "query": "",
+        "url": "https://behavior.test/domains/domain-1",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "bodyText": "{\"open_tracking\":false,\"click_tracking\":false,\"tls\":\"opportunistic\",\"capabilities\":{\"sending\":\"enabled\",\"receiving\":\"enabled\"},\"tracking_subdomain\":\"tracking_subdomain\"}",
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"id\":\"d91cd9bd-1176-453e-8fc1-35364d380206\",\"object\":\"domain\"}",
+        "value": {
+          "id": "d91cd9bd-1176-453e-8fc1-35364d380206",
+          "object": "domain"
+        }
+      }
+    },
+    {
+      "id": "behavior-12",
+      "operationId": "domainsRemove",
+      "kinds": ["auth-application", "json-response", "path-serialization"],
+      "request": {
+        "method": "DELETE",
+        "pathTemplate": "/domains/{domain_id}",
+        "pathParameters": {
+          "domain_id": "domain-1"
+        },
+        "query": [],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "DELETE",
+        "path": "/domains/domain-1",
+        "query": "",
+        "url": "https://behavior.test/domains/domain-1",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"domain\",\"id\":\"d91cd9bd-1176-453e-8fc1-35364d380206\",\"deleted\":true}",
+        "value": {
+          "object": "domain",
+          "id": "d91cd9bd-1176-453e-8fc1-35364d380206",
+          "deleted": true
+        }
+      }
+    },
+    {
+      "id": "behavior-13",
+      "operationId": "domainsCreateClaim",
+      "kinds": ["auth-application", "json-request", "json-response"],
+      "request": {
+        "method": "POST",
+        "pathTemplate": "/domains/claim",
+        "pathParameters": {},
+        "query": [],
+        "headers": {},
+        "body": {
+          "name": "Example Name",
+          "region": "us-east-1",
+          "custom_return_path": "send",
+          "open_tracking": false,
+          "click_tracking": false,
+          "tracking_subdomain": "tracking_subdomain"
+        },
+        "bodyKind": "json",
+        "contentType": "application/json",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "POST",
+        "path": "/domains/claim",
+        "query": "",
+        "url": "https://behavior.test/domains/claim",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "bodyText": "{\"name\":\"Example Name\",\"region\":\"us-east-1\",\"custom_return_path\":\"send\",\"open_tracking\":false,\"click_tracking\":false,\"tracking_subdomain\":\"tracking_subdomain\"}",
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"domain_claim\",\"id\":\"d91cd9bd-1176-453e-8fc1-35364d380206\",\"name\":\"example.com\",\"status\":\"pending\",\"domain_id\":\"a1b2c3d4-1176-453e-8fc1-35364d380206\",\"region\":\"us-east-1\",\"record\":{\"type\":\"TXT\",\"name\":\"example.com\",\"value\":\"resend-domain-verification=abc123\",\"ttl\":\"Auto\"},\"blocked_reason\":null,\"failure_reason\":null,\"created_at\":\"2023-04-26 20:21:26.347412+00\",\"expires_at\":\"2023-05-03 20:21:26.347412+00\"}",
+        "value": {
+          "object": "domain_claim",
+          "id": "d91cd9bd-1176-453e-8fc1-35364d380206",
+          "name": "example.com",
+          "status": "pending",
+          "domain_id": "a1b2c3d4-1176-453e-8fc1-35364d380206",
+          "region": "us-east-1",
+          "record": {
+            "type": "TXT",
+            "name": "example.com",
+            "value": "resend-domain-verification=abc123",
+            "ttl": "Auto"
+          },
+          "blocked_reason": null,
+          "failure_reason": null,
+          "created_at": "2023-04-26 20:21:26.347412+00",
+          "expires_at": "2023-05-03 20:21:26.347412+00"
+        }
+      }
+    },
+    {
+      "id": "behavior-14",
+      "operationId": "audiencesList",
+      "kinds": ["auth-application", "json-response"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/audiences",
+        "pathParameters": {},
+        "query": [],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/audiences",
+        "query": "",
+        "url": "https://behavior.test/audiences",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"list\",\"data\":[{\"id\":\"78261eea-8f8b-4381-83c6-79fa7120f1cf\",\"name\":\"Registered Users\",\"created_at\":\"2023-10-06 22:59:55.977+00\"}]}",
+        "value": {
+          "object": "list",
+          "data": [
+            {
+              "id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+              "name": "Registered Users",
+              "created_at": "2023-10-06 22:59:55.977+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "behavior-15",
+      "operationId": "contactsCreateImport",
+      "kinds": ["auth-application", "json-response", "multipart-request"],
+      "request": {
+        "method": "POST",
+        "pathTemplate": "/contacts/imports",
+        "pathParameters": {},
+        "query": [],
+        "headers": {},
+        "body": {
+          "file": "ZXhhbXBsZQ==",
+          "column_map": "{\"email\":\"Email\",\"first_name\":\"First Name\",\"last_name\":\"Last Name\",\"unsubscribed\":\"Unsubscribed\",\"properties\":{\"plan\":{\"column\":\"Plan\",\"type\":\"string\"}}}",
+          "on_conflict": "skip",
+          "segments": "[{\"id\":\"78261eea-8f8b-4381-83c6-79fa7120f1cf\"}]",
+          "topics": "[{\"id\":\"b6d24b8e-af0b-4c3c-be0c-359bbd97381e\",\"subscription\":\"opt_in\"}]"
+        },
+        "bodyKind": "multipart",
+        "contentType": "multipart/form-data",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "POST",
+        "path": "/contacts/imports",
+        "query": "",
+        "url": "https://behavior.test/contacts/imports",
+        "headers": {
+          "content-type": "multipart/form-data"
+        },
+        "bodyText": null,
+        "multipartFields": ["column_map", "file", "on_conflict", "segments", "topics"]
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"contact_import\",\"id\":\"479e3145-dd38-476b-932c-529ceb705947\"}",
+        "value": {
+          "object": "contact_import",
+          "id": "479e3145-dd38-476b-932c-529ceb705947"
+        }
+      }
+    },
+    {
+      "id": "behavior-16",
+      "operationId": "contactsListImports",
+      "kinds": ["auth-application", "json-response", "query-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/contacts/imports",
+        "pathParameters": {},
+        "query": [
+          {
+            "name": "status",
+            "style": "form",
+            "explode": true,
+            "value": "queued",
+            "serialized": "queued"
+          },
+          {
+            "name": "limit",
+            "style": "form",
+            "explode": true,
+            "value": 1,
+            "serialized": "1"
+          },
+          {
+            "name": "after",
+            "style": "form",
+            "explode": true,
+            "value": "after",
+            "serialized": "after"
+          },
+          {
+            "name": "before",
+            "style": "form",
+            "explode": true,
+            "value": "before",
+            "serialized": "before"
+          }
+        ],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/contacts/imports",
+        "query": "status=queued&limit=1&after=after&before=before",
+        "url": "https://behavior.test/contacts/imports?status=queued&limit=1&after=after&before=before",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"list\",\"has_more\":false,\"data\":[{\"object\":\"contact_import\",\"id\":\"479e3145-dd38-476b-932c-529ceb705947\",\"status\":\"completed\",\"created_at\":\"2023-10-06 23:47:56.678+00\",\"completed_at\":\"2023-10-06 23:50:56.678+00\",\"counts\":{\"total\":100,\"created\":80,\"updated\":10,\"skipped\":5,\"failed\":5}}]}",
+        "value": {
+          "object": "list",
+          "has_more": false,
+          "data": [
+            {
+              "object": "contact_import",
+              "id": "479e3145-dd38-476b-932c-529ceb705947",
+              "status": "completed",
+              "created_at": "2023-10-06 23:47:56.678+00",
+              "completed_at": "2023-10-06 23:50:56.678+00",
+              "counts": {
+                "total": 100,
+                "created": 80,
+                "updated": 10,
+                "skipped": 5,
+                "failed": 5
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "behavior-17",
+      "operationId": "listRecipients",
+      "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/broadcasts/{id}/recipients",
+        "pathParameters": {
+          "id": "00000000-0000-4000-8000-000000000000"
+        },
+        "query": [
+          {
+            "name": "type",
+            "style": "form",
+            "explode": true,
+            "value": "sent",
+            "serialized": "sent"
+          },
+          {
+            "name": "email",
+            "style": "form",
+            "explode": true,
+            "value": "user@example.com",
+            "serialized": "user@example.com"
+          },
+          {
+            "name": "bounce_type",
+            "style": "form",
+            "explode": true,
+            "value": "permanent",
+            "serialized": "permanent"
+          },
+          {
+            "name": "limit",
+            "style": "form",
+            "explode": true,
+            "value": 1,
+            "serialized": "1"
+          },
+          {
+            "name": "after",
+            "style": "form",
+            "explode": true,
+            "value": "after",
+            "serialized": "after"
+          },
+          {
+            "name": "before",
+            "style": "form",
+            "explode": true,
+            "value": "before",
+            "serialized": "before"
+          }
+        ],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/broadcasts/00000000-0000-4000-8000-000000000000/recipients",
+        "query": "type=sent&email=user%40example.com&bounce_type=permanent&limit=1&after=after&before=before",
+        "url": "https://behavior.test/broadcasts/00000000-0000-4000-8000-000000000000/recipients?type=sent&email=user%40example.com&bounce_type=permanent&limit=1&after=after&before=before",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"list\",\"has_more\":false,\"data\":[{\"id\":\"b2Zmc2V0OjA\",\"contact_id\":\"e169aa45-1ecf-4183-9955-b1499d5701d3\",\"email\":\"steve.wozniak@gmail.com\",\"count\":3,\"bounce_type\":\"permanent\",\"clicked_links\":[{\"url\":\"https://resend.com/pricing\",\"clicks\":2}]}]}",
+        "value": {
+          "object": "list",
+          "has_more": false,
+          "data": [
+            {
+              "id": "b2Zmc2V0OjA",
+              "contact_id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
+              "email": "steve.wozniak@gmail.com",
+              "count": 3,
+              "bounce_type": "permanent",
+              "clicked_links": [
+                {
+                  "url": "https://resend.com/pricing",
+                  "clicks": 2
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "behavior-18",
+      "operationId": "webhooksListEvents",
+      "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/webhooks/{webhook_id}/events",
+        "pathParameters": {
+          "webhook_id": "00000000-0000-4000-8000-000000000000"
+        },
+        "query": [
+          {
+            "name": "limit",
+            "style": "form",
+            "explode": true,
+            "value": 1,
+            "serialized": "1"
+          },
+          {
+            "name": "after",
+            "style": "form",
+            "explode": true,
+            "value": "after",
+            "serialized": "after"
+          }
+        ],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/webhooks/00000000-0000-4000-8000-000000000000/events",
+        "query": "limit=1&after=after",
+        "url": "https://behavior.test/webhooks/00000000-0000-4000-8000-000000000000/events?limit=1&after=after",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"list\",\"has_more\":false,\"data\":[{\"id\":\"msg_1srOrx2ZWZBpBUvZwXKQmoEYga2\",\"type\":\"email.sent\",\"created_at\":\"2026-08-22T15:28:00.000Z\",\"status\":\"success\"}]}",
+        "value": {
+          "object": "list",
+          "has_more": false,
+          "data": [
+            {
+              "id": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2",
+              "type": "email.sent",
+              "created_at": "2026-08-22T15:28:00.000Z",
+              "status": "success"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "behavior-19",
+      "operationId": "webhooksReplayEvent",
+      "kinds": ["auth-application", "json-response", "path-serialization"],
+      "request": {
+        "method": "POST",
+        "pathTemplate": "/webhooks/{webhook_id}/events/{event_id}/replay",
+        "pathParameters": {
+          "webhook_id": "00000000-0000-4000-8000-000000000000",
+          "event_id": "event-1"
+        },
+        "query": [],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "POST",
+        "path": "/webhooks/00000000-0000-4000-8000-000000000000/events/event-1/replay",
+        "query": "",
+        "url": "https://behavior.test/webhooks/00000000-0000-4000-8000-000000000000/events/event-1/replay",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"webhook_event\",\"id\":\"msg_1srOrx2ZWZBpBUvZwXKQmoEYga2\"}",
+        "value": {
+          "object": "webhook_event",
+          "id": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+        }
+      }
+    },
+    {
+      "id": "behavior-20",
+      "operationId": "webhooksListEventAttempts",
+      "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/webhooks/{webhook_id}/events/{event_id}/attempts",
+        "pathParameters": {
+          "webhook_id": "00000000-0000-4000-8000-000000000000",
+          "event_id": "event-1"
+        },
+        "query": [
+          {
+            "name": "limit",
+            "style": "form",
+            "explode": true,
+            "value": 1,
+            "serialized": "1"
+          },
+          {
+            "name": "after",
+            "style": "form",
+            "explode": true,
+            "value": "after",
+            "serialized": "after"
+          }
+        ],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/webhooks/00000000-0000-4000-8000-000000000000/events/event-1/attempts",
+        "query": "limit=1&after=after",
+        "url": "https://behavior.test/webhooks/00000000-0000-4000-8000-000000000000/events/event-1/attempts?limit=1&after=after",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"list\",\"has_more\":false,\"data\":[{\"id\":\"atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2\",\"http_status_code\":200,\"response\":\"{\\\"ok\\\":true}\",\"sent_at\":\"2026-08-22T15:33:12.000Z\"}]}",
+        "value": {
+          "object": "list",
+          "has_more": false,
+          "data": [
+            {
+              "id": "atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2",
+              "http_status_code": 200,
+              "response": "{\"ok\":true}",
+              "sent_at": "2026-08-22T15:33:12.000Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "behavior-21",
+      "operationId": "contactsRemoveSegment",
+      "kinds": ["auth-application", "json-response", "path-serialization"],
+      "request": {
+        "method": "DELETE",
+        "pathTemplate": "/contacts/{contact_id}/segments/{segment_id}",
+        "pathParameters": {
+          "contact_id": "contact-1",
+          "segment_id": "segment-1"
+        },
+        "query": [],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "DELETE",
+        "path": "/contacts/contact-1/segments/segment-1",
+        "query": "",
+        "url": "https://behavior.test/contacts/contact-1/segments/segment-1",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"contact_segment\",\"contact_id\":\"contact-1\",\"segment_id\":\"segment-1\",\"deleted\":true}",
+        "value": {
+          "object": "contact_segment",
+          "contact_id": "contact-1",
+          "segment_id": "segment-1",
+          "deleted": true
+        }
+      }
+    },
+    {
+      "id": "behavior-22",
+      "operationId": "automationsListRuns",
+      "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/automations/{automation_id}/runs",
+        "pathParameters": {
+          "automation_id": "00000000-0000-4000-8000-000000000000"
+        },
+        "query": [
+          {
+            "name": "status",
+            "style": "form",
+            "explode": true,
+            "value": "active",
+            "serialized": "active"
+          },
+          {
+            "name": "limit",
+            "style": "form",
+            "explode": true,
+            "value": 1,
+            "serialized": "1"
+          },
+          {
+            "name": "after",
+            "style": "form",
+            "explode": true,
+            "value": "after",
+            "serialized": "after"
+          },
+          {
+            "name": "before",
+            "style": "form",
+            "explode": true,
+            "value": "before",
+            "serialized": "before"
+          }
+        ],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/automations/00000000-0000-4000-8000-000000000000/runs",
+        "query": "status=active&limit=1&after=after&before=before",
+        "url": "https://behavior.test/automations/00000000-0000-4000-8000-000000000000/runs?status=active&limit=1&after=after&before=before",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"list\",\"has_more\":false,\"data\":[{\"id\":\"id-1\",\"status\":\"running\",\"started_at\":\"2023-10-06 23:47:56.678+00\",\"completed_at\":\"2023-10-06 23:47:56.678+00\",\"created_at\":\"2023-10-06 23:47:56.678+00\"}]}",
+        "value": {
+          "object": "list",
+          "has_more": false,
+          "data": [
+            {
+              "id": "id-1",
+              "status": "running",
+              "started_at": "2023-10-06 23:47:56.678+00",
+              "completed_at": "2023-10-06 23:47:56.678+00",
+              "created_at": "2023-10-06 23:47:56.678+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "behavior-23",
+      "operationId": "inboxesUpdateLabel",
+      "kinds": ["auth-application", "json-request", "json-response", "path-serialization"],
+      "request": {
+        "method": "PATCH",
+        "pathTemplate": "/inboxes/{inbox_id}/labels/{label_id}",
+        "pathParameters": {
+          "inbox_id": "00000000-0000-4000-8000-000000000000",
+          "label_id": "00000000-0000-4000-8000-000000000000"
+        },
+        "query": [],
+        "headers": {},
+        "body": {
+          "name": "Billing",
+          "color": "#F76B15"
+        },
+        "bodyKind": "json",
+        "contentType": "application/json",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "PATCH",
+        "path": "/inboxes/00000000-0000-4000-8000-000000000000/labels/00000000-0000-4000-8000-000000000000",
+        "query": "",
+        "url": "https://behavior.test/inboxes/00000000-0000-4000-8000-000000000000/labels/00000000-0000-4000-8000-000000000000",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "bodyText": "{\"name\":\"Billing\",\"color\":\"#F76B15\"}",
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"inbox_label\",\"id\":\"7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34\"}",
+        "value": {
+          "object": "inbox_label",
+          "id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34"
+        }
+      }
+    },
+    {
+      "id": "behavior-24",
+      "operationId": "inboxesListThreads",
+      "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/inboxes/{inbox_id}/threads",
+        "pathParameters": {
+          "inbox_id": "00000000-0000-4000-8000-000000000000"
+        },
+        "query": [
+          {
+            "name": "folders",
+            "style": "form",
+            "explode": false,
+            "value": ["inbox"],
+            "serialized": "inbox"
+          },
+          {
+            "name": "labels",
+            "style": "form",
+            "explode": false,
+            "value": ["00000000-0000-4000-8000-000000000000"],
+            "serialized": "00000000-0000-4000-8000-000000000000"
+          },
+          {
+            "name": "read",
+            "style": "form",
+            "explode": true,
+            "value": false,
+            "serialized": "false"
+          },
+          {
+            "name": "limit",
+            "style": "form",
+            "explode": true,
+            "value": 1,
+            "serialized": "1"
+          },
+          {
+            "name": "after",
+            "style": "form",
+            "explode": true,
+            "value": "after",
+            "serialized": "after"
+          },
+          {
+            "name": "before",
+            "style": "form",
+            "explode": true,
+            "value": "before",
+            "serialized": "before"
+          }
+        ],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/inboxes/00000000-0000-4000-8000-000000000000/threads",
+        "query": "folders=inbox&labels=00000000-0000-4000-8000-000000000000&read=false&limit=1&after=after&before=before",
+        "url": "https://behavior.test/inboxes/00000000-0000-4000-8000-000000000000/threads?folders=inbox&labels=00000000-0000-4000-8000-000000000000&read=false&limit=1&after=after&before=before",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"list\",\"has_more\":true,\"data\":[{\"id\":\"4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12\",\"subject\":\"Refund for order 1041\",\"from\":\"ada@example.org\",\"to\":[\"support@example.com\"],\"cc\":[],\"bcc\":[],\"labels\":[{\"id\":\"7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34\",\"name\":\"Urgent\",\"color\":\"#E93D82\"}],\"email_count\":2,\"has_attachment\":true,\"has_draft\":false,\"read\":false,\"received_at\":\"2026-08-05T14:03:11.229Z\",\"folder\":\"inbox\"}]}",
+        "value": {
+          "object": "list",
+          "has_more": true,
+          "data": [
+            {
+              "id": "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+              "subject": "Refund for order 1041",
+              "from": "ada@example.org",
+              "to": ["support@example.com"],
+              "cc": [],
+              "bcc": [],
+              "labels": [
+                {
+                  "id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
+                  "name": "Urgent",
+                  "color": "#E93D82"
+                }
+              ],
+              "email_count": 2,
+              "has_attachment": true,
+              "has_draft": false,
+              "read": false,
+              "received_at": "2026-08-05T14:03:11.229Z",
+              "folder": "inbox"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "behavior-25",
+      "operationId": "inboxesSearchThreads",
+      "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/inboxes/{inbox_id}/threads/search",
+        "pathParameters": {
+          "inbox_id": "00000000-0000-4000-8000-000000000000"
+        },
+        "query": [
+          {
+            "name": "query",
+            "style": "form",
+            "explode": true,
+            "value": "query",
+            "serialized": "query"
+          },
+          {
+            "name": "from",
+            "style": "form",
+            "explode": false,
+            "value": ["from"],
+            "serialized": "from"
+          },
+          {
+            "name": "to",
+            "style": "form",
+            "explode": false,
+            "value": ["to"],
+            "serialized": "to"
+          },
+          {
+            "name": "cc",
+            "style": "form",
+            "explode": false,
+            "value": ["cc"],
+            "serialized": "cc"
+          },
+          {
+            "name": "bcc",
+            "style": "form",
+            "explode": false,
+            "value": ["bcc"],
+            "serialized": "bcc"
+          },
+          {
+            "name": "has_attachment",
+            "style": "form",
+            "explode": true,
+            "value": false,
+            "serialized": "false"
+          },
+          {
+            "name": "start_date",
+            "style": "form",
+            "explode": true,
+            "value": "2024-01-01T00:00:00Z",
+            "serialized": "2024-01-01T00:00:00Z"
+          },
+          {
+            "name": "end_date",
+            "style": "form",
+            "explode": true,
+            "value": "2024-01-01T00:00:00Z",
+            "serialized": "2024-01-01T00:00:00Z"
+          },
+          {
+            "name": "folders",
+            "style": "form",
+            "explode": false,
+            "value": ["inbox"],
+            "serialized": "inbox"
+          },
+          {
+            "name": "labels",
+            "style": "form",
+            "explode": false,
+            "value": ["00000000-0000-4000-8000-000000000000"],
+            "serialized": "00000000-0000-4000-8000-000000000000"
+          },
+          {
+            "name": "read",
+            "style": "form",
+            "explode": true,
+            "value": false,
+            "serialized": "false"
+          },
+          {
+            "name": "limit",
+            "style": "form",
+            "explode": true,
+            "value": 1,
+            "serialized": "1"
+          },
+          {
+            "name": "after",
+            "style": "form",
+            "explode": true,
+            "value": "after",
+            "serialized": "after"
+          },
+          {
+            "name": "before",
+            "style": "form",
+            "explode": true,
+            "value": "before",
+            "serialized": "before"
+          }
+        ],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/inboxes/00000000-0000-4000-8000-000000000000/threads/search",
+        "query": "query=query&from=from&to=to&cc=cc&bcc=bcc&has_attachment=false&start_date=2024-01-01T00%3A00%3A00Z&end_date=2024-01-01T00%3A00%3A00Z&folders=inbox&labels=00000000-0000-4000-8000-000000000000&read=false&limit=1&after=after&before=before",
+        "url": "https://behavior.test/inboxes/00000000-0000-4000-8000-000000000000/threads/search?query=query&from=from&to=to&cc=cc&bcc=bcc&has_attachment=false&start_date=2024-01-01T00%3A00%3A00Z&end_date=2024-01-01T00%3A00%3A00Z&folders=inbox&labels=00000000-0000-4000-8000-000000000000&read=false&limit=1&after=after&before=before",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"list\",\"has_more\":true,\"data\":[{\"id\":\"4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12\",\"subject\":\"Refund for order 1041\",\"from\":\"ada@example.org\",\"to\":[\"support@example.com\"],\"cc\":[],\"bcc\":[],\"labels\":[{\"id\":\"7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34\",\"name\":\"Urgent\",\"color\":\"#E93D82\"}],\"email_count\":2,\"has_attachment\":true,\"has_draft\":false,\"read\":false,\"received_at\":\"2026-08-05T14:03:11.229Z\",\"folder\":\"inbox\",\"matched_email_id\":\"e8a3f1c6-2b9d-4e5a-a7c4-9d1b6f3e2a80\",\"highlights\":{\"subject\":[\"September **invoice**\"],\"attachments\":[\"**invoice**-2026-09.pdf\"]}}]}",
+        "value": {
+          "object": "list",
+          "has_more": true,
+          "data": [
+            {
+              "id": "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+              "subject": "Refund for order 1041",
+              "from": "ada@example.org",
+              "to": ["support@example.com"],
+              "cc": [],
+              "bcc": [],
+              "labels": [
+                {
+                  "id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
+                  "name": "Urgent",
+                  "color": "#E93D82"
+                }
+              ],
+              "email_count": 2,
+              "has_attachment": true,
+              "has_draft": false,
+              "read": false,
+              "received_at": "2026-08-05T14:03:11.229Z",
+              "folder": "inbox",
+              "matched_email_id": "e8a3f1c6-2b9d-4e5a-a7c4-9d1b6f3e2a80",
+              "highlights": {
+                "subject": ["September **invoice**"],
+                "attachments": ["**invoice**-2026-09.pdf"]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "behavior-26",
+      "operationId": "inboxesListThreadEmails",
+      "kinds": ["auth-application", "json-response", "path-serialization", "query-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/inboxes/{inbox_id}/threads/{thread_id}/emails",
+        "pathParameters": {
+          "inbox_id": "00000000-0000-4000-8000-000000000000",
+          "thread_id": "00000000-0000-4000-8000-000000000000"
+        },
+        "query": [
+          {
+            "name": "limit",
+            "style": "form",
+            "explode": true,
+            "value": 1,
+            "serialized": "1"
+          },
+          {
+            "name": "after",
+            "style": "form",
+            "explode": true,
+            "value": "after",
+            "serialized": "after"
+          },
+          {
+            "name": "before",
+            "style": "form",
+            "explode": true,
+            "value": "before",
+            "serialized": "before"
+          }
+        ],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/inboxes/00000000-0000-4000-8000-000000000000/threads/00000000-0000-4000-8000-000000000000/emails",
+        "query": "limit=1&after=after&before=before",
+        "url": "https://behavior.test/inboxes/00000000-0000-4000-8000-000000000000/threads/00000000-0000-4000-8000-000000000000/emails?limit=1&after=after&before=before",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"list\",\"has_more\":false,\"data\":[{\"id\":\"5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60\",\"direction\":\"inbound\",\"from\":\"Ada Lovelace <ada@example.org>\",\"to\":[\"support@acme.com\"],\"cc\":[],\"bcc\":[],\"reply_to\":[\"replies@example.org\"],\"subject\":\"Refund for order 1041\",\"message_id\":\"<1041@example.org>\",\"html\":\"<p>Could I get a refund for order 1041?</p>\",\"text\":\"Could I get a refund for order 1041?\",\"attachments\":[{\"id\":\"9d4f2b81-6c3a-4e7d-8b12-0a5c6d7e8f90\",\"filename\":\"receipt.pdf\",\"size\":20841}],\"read\":false,\"received_at\":\"2026-08-05T14:03:11.229Z\"}]}",
+        "value": {
+          "object": "list",
+          "has_more": false,
+          "data": [
+            {
+              "id": "5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60",
+              "direction": "inbound",
+              "from": "Ada Lovelace <ada@example.org>",
+              "to": ["support@acme.com"],
+              "cc": [],
+              "bcc": [],
+              "reply_to": ["replies@example.org"],
+              "subject": "Refund for order 1041",
+              "message_id": "<1041@example.org>",
+              "html": "<p>Could I get a refund for order 1041?</p>",
+              "text": "Could I get a refund for order 1041?",
+              "attachments": [
+                {
+                  "id": "9d4f2b81-6c3a-4e7d-8b12-0a5c6d7e8f90",
+                  "filename": "receipt.pdf",
+                  "size": 20841
+                }
+              ],
+              "read": false,
+              "received_at": "2026-08-05T14:03:11.229Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "behavior-27",
+      "operationId": "inboxesGetThreadEmail",
+      "kinds": ["auth-application", "json-response", "path-serialization"],
+      "request": {
+        "method": "GET",
+        "pathTemplate": "/inboxes/{inbox_id}/threads/{thread_id}/emails/{email_id}",
+        "pathParameters": {
+          "inbox_id": "00000000-0000-4000-8000-000000000000",
+          "thread_id": "00000000-0000-4000-8000-000000000000",
+          "email_id": "00000000-0000-4000-8000-000000000000"
+        },
+        "query": [],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "GET",
+        "path": "/inboxes/00000000-0000-4000-8000-000000000000/threads/00000000-0000-4000-8000-000000000000/emails/00000000-0000-4000-8000-000000000000",
+        "query": "",
+        "url": "https://behavior.test/inboxes/00000000-0000-4000-8000-000000000000/threads/00000000-0000-4000-8000-000000000000/emails/00000000-0000-4000-8000-000000000000",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"id\":\"5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60\",\"direction\":\"inbound\",\"from\":\"Ada Lovelace <ada@example.org>\",\"to\":[\"support@acme.com\"],\"cc\":[],\"bcc\":[],\"reply_to\":[\"replies@example.org\"],\"subject\":\"Refund for order 1041\",\"message_id\":\"<1041@example.org>\",\"html\":\"<p>Could I get a refund for order 1041?</p>\",\"text\":\"Could I get a refund for order 1041?\",\"attachments\":[{\"id\":\"9d4f2b81-6c3a-4e7d-8b12-0a5c6d7e8f90\",\"filename\":\"receipt.pdf\",\"size\":20841}],\"read\":false,\"received_at\":\"2026-08-05T14:03:11.229Z\"}",
+        "value": {
+          "id": "5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60",
+          "direction": "inbound",
+          "from": "Ada Lovelace <ada@example.org>",
+          "to": ["support@acme.com"],
+          "cc": [],
+          "bcc": [],
+          "reply_to": ["replies@example.org"],
+          "subject": "Refund for order 1041",
+          "message_id": "<1041@example.org>",
+          "html": "<p>Could I get a refund for order 1041?</p>",
+          "text": "Could I get a refund for order 1041?",
+          "attachments": [
+            {
+              "id": "9d4f2b81-6c3a-4e7d-8b12-0a5c6d7e8f90",
+              "filename": "receipt.pdf",
+              "size": 20841
+            }
+          ],
+          "read": false,
+          "received_at": "2026-08-05T14:03:11.229Z"
+        }
+      }
+    },
+    {
+      "id": "behavior-28",
+      "operationId": "inboxesReplyThreadEmail",
+      "kinds": [
+        "auth-application",
+        "header-serialization",
+        "json-request",
+        "json-response",
+        "path-serialization"
+      ],
+      "request": {
+        "method": "POST",
+        "pathTemplate": "/inboxes/{inbox_id}/threads/{thread_id}/emails/{email_id}/reply",
+        "pathParameters": {
+          "inbox_id": "00000000-0000-4000-8000-000000000000",
+          "thread_id": "00000000-0000-4000-8000-000000000000",
+          "email_id": "00000000-0000-4000-8000-000000000000"
+        },
+        "query": [],
+        "headers": {
+          "idempotency-key": "x"
+        },
+        "body": {
+          "cc": ["billing@acme.com"],
+          "bcc": ["records@acme.com"],
+          "html": "<p>Refund issued for order 1041.</p>",
+          "text": "Refund issued for order 1041.",
+          "subject": "Re: Refund for order 1041",
+          "reply_all": false,
+          "attachments": [
+            {
+              "content": "ZXhhbXBsZQ==",
+              "filename": "Example Name",
+              "path": "path",
+              "content_type": "content_type",
+              "content_id": "content-1"
+            }
+          ],
+          "headers": {
+            "X-Ticket-Id": "4821"
+          }
+        },
+        "bodyKind": "json",
+        "contentType": "application/json",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "POST",
+        "path": "/inboxes/00000000-0000-4000-8000-000000000000/threads/00000000-0000-4000-8000-000000000000/emails/00000000-0000-4000-8000-000000000000/reply",
+        "query": "",
+        "url": "https://behavior.test/inboxes/00000000-0000-4000-8000-000000000000/threads/00000000-0000-4000-8000-000000000000/emails/00000000-0000-4000-8000-000000000000/reply",
+        "headers": {
+          "idempotency-key": "x",
+          "content-type": "application/json"
+        },
+        "bodyText": "{\"cc\":[\"billing@acme.com\"],\"bcc\":[\"records@acme.com\"],\"html\":\"<p>Refund issued for order 1041.</p>\",\"text\":\"Refund issued for order 1041.\",\"subject\":\"Re: Refund for order 1041\",\"reply_all\":false,\"attachments\":[{\"content\":\"ZXhhbXBsZQ==\",\"filename\":\"Example Name\",\"path\":\"path\",\"content_type\":\"content_type\",\"content_id\":\"content-1\"}],\"headers\":{\"X-Ticket-Id\":\"4821\"}}",
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"id\":\"6a0c8e58-3d9e-4f7a-8b14-2e3f4a5b6c71\"}",
+        "value": {
+          "id": "6a0c8e58-3d9e-4f7a-8b14-2e3f4a5b6c71"
+        }
+      }
+    },
+    {
+      "id": "behavior-29",
+      "operationId": "inboxesCreateDraft",
+      "kinds": [
+        "auth-application",
+        "header-serialization",
+        "json-request",
+        "json-response",
+        "path-serialization"
+      ],
+      "request": {
+        "method": "POST",
+        "pathTemplate": "/inboxes/{inbox_id}/drafts",
+        "pathParameters": {
+          "inbox_id": "00000000-0000-4000-8000-000000000000"
+        },
+        "query": [],
+        "headers": {
+          "idempotency-key": "x"
+        },
+        "body": {
+          "to": ["ada@example.org"],
+          "cc": "cc",
+          "bcc": "bcc",
+          "subject": "Refund for order 1041",
+          "html": "<p>Refund issued for order 1041.</p>",
+          "text": "Refund issued for order 1041.",
+          "attachments": [
+            {
+              "content": "aGVsbG8gZTJl",
+              "filename": "receipt.pdf",
+              "content_type": "application/pdf"
+            }
+          ],
+          "thread_id": "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+          "reply_to_email_id": "5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60"
+        },
+        "bodyKind": "json",
+        "contentType": "application/json",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "POST",
+        "path": "/inboxes/00000000-0000-4000-8000-000000000000/drafts",
+        "query": "",
+        "url": "https://behavior.test/inboxes/00000000-0000-4000-8000-000000000000/drafts",
+        "headers": {
+          "idempotency-key": "x",
+          "content-type": "application/json"
+        },
+        "bodyText": "{\"to\":[\"ada@example.org\"],\"cc\":\"cc\",\"bcc\":\"bcc\",\"subject\":\"Refund for order 1041\",\"html\":\"<p>Refund issued for order 1041.</p>\",\"text\":\"Refund issued for order 1041.\",\"attachments\":[{\"content\":\"aGVsbG8gZTJl\",\"filename\":\"receipt.pdf\",\"content_type\":\"application/pdf\"}],\"thread_id\":\"4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12\",\"reply_to_email_id\":\"5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60\"}",
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"inbox_draft\",\"id\":\"c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32\"}",
+        "value": {
+          "object": "inbox_draft",
+          "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32"
+        }
+      }
+    },
+    {
+      "id": "behavior-30",
+      "operationId": "inboxesSendDraft",
+      "kinds": [
+        "auth-application",
+        "header-serialization",
+        "json-request",
+        "json-response",
+        "path-serialization"
+      ],
+      "request": {
+        "method": "POST",
+        "pathTemplate": "/inboxes/{inbox_id}/drafts/{draft_id}/send",
+        "pathParameters": {
+          "inbox_id": "00000000-0000-4000-8000-000000000000",
+          "draft_id": "00000000-0000-4000-8000-000000000000"
+        },
+        "query": [],
+        "headers": {
+          "idempotency-key": "x"
+        },
+        "body": {
+          "headers": {
+            "X-Ticket-Id": "4821"
+          }
+        },
+        "bodyKind": "json",
+        "contentType": "application/json",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "POST",
+        "path": "/inboxes/00000000-0000-4000-8000-000000000000/drafts/00000000-0000-4000-8000-000000000000/send",
+        "query": "",
+        "url": "https://behavior.test/inboxes/00000000-0000-4000-8000-000000000000/drafts/00000000-0000-4000-8000-000000000000/send",
+        "headers": {
+          "idempotency-key": "x",
+          "content-type": "application/json"
+        },
+        "bodyText": "{\"headers\":{\"X-Ticket-Id\":\"4821\"}}",
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"id\":\"6a0c8e58-3d9e-4f7a-8b14-2e3f4a5b6c71\"}",
+        "value": {
+          "id": "6a0c8e58-3d9e-4f7a-8b14-2e3f4a5b6c71"
+        }
+      }
+    },
+    {
+      "id": "behavior-1-default-base-url",
+      "operationId": "emailsSend",
+      "kinds": [],
+      "request": {
+        "method": "POST",
+        "pathTemplate": "/emails",
+        "pathParameters": {},
+        "query": [],
+        "headers": {
+          "idempotency-key": "Idempotency-Key"
+        },
+        "body": {
+          "from": "from",
+          "to": "to",
+          "subject": "subject",
+          "bcc": "bcc",
+          "cc": "cc",
+          "reply_to": "reply_to",
+          "html": "html",
+          "text": "text",
+          "template": {
+            "id": "id-1",
+            "variables": {
+              "variableName": "Sign up now",
+              "variableName2": 123
+            }
+          },
+          "headers": {},
+          "scheduled_at": "2024-01-01T00:00:00Z",
+          "attachments": [
+            {
+              "content": "ZXhhbXBsZQ==",
+              "filename": "Example Name",
+              "path": "path",
+              "content_type": "content_type",
+              "content_id": "content-1"
+            }
+          ],
+          "tags": [
+            {
+              "name": "Example Name",
+              "value": "value"
+            }
+          ],
+          "topic_id": "topic-1"
+        },
+        "bodyKind": "json",
+        "contentType": "application/json",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "POST",
+        "path": "/emails",
+        "query": "",
+        "url": "https://api.resend.com/emails",
+        "headers": {
+          "idempotency-key": "Idempotency-Key",
+          "content-type": "application/json"
+        },
+        "bodyText": "{\"from\":\"from\",\"to\":\"to\",\"subject\":\"subject\",\"bcc\":\"bcc\",\"cc\":\"cc\",\"reply_to\":\"reply_to\",\"html\":\"html\",\"text\":\"text\",\"template\":{\"id\":\"id-1\",\"variables\":{\"variableName\":\"Sign up now\",\"variableName2\":123}},\"headers\":{},\"scheduled_at\":\"2024-01-01T00:00:00Z\",\"attachments\":[{\"content\":\"ZXhhbXBsZQ==\",\"filename\":\"Example Name\",\"path\":\"path\",\"content_type\":\"content_type\",\"content_id\":\"content-1\"}],\"tags\":[{\"name\":\"Example Name\",\"value\":\"value\"}],\"topic_id\":\"topic-1\"}",
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"id\":\"id-1\"}",
+        "value": {
+          "id": "id-1"
+        }
+      },
+      "probe": "default-base-url"
+    },
+    {
+      "id": "behavior-5-lost-response",
+      "operationId": "emailsCancel",
+      "kinds": [],
+      "request": {
+        "method": "POST",
+        "pathTemplate": "/emails/{email_id}/cancel",
+        "pathParameters": {
+          "email_id": "email-1"
+        },
+        "query": [],
+        "headers": {},
+        "bodyKind": null,
+        "contentType": null,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "POST",
+        "path": "/emails/email-1/cancel",
+        "query": "",
+        "url": "https://behavior.test/emails/email-1/cancel",
+        "headers": {},
+        "bodyText": null,
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"object\":\"email\",\"id\":\"4ef9a417-02e9-4d39-ad75-9611e0fcc33c\",\"message_id\":\"<202301010000.4ef9a417@email.example.com>\",\"to\":[\"delivered@resend.dev\"],\"from\":\"Acme <onboarding@resend.dev>\",\"created_at\":\"2023-04-03 22:13:42.674981+00\",\"subject\":\"Hello World\",\"html\":\"Congrats on sending your <strong>first email</strong>!\",\"text\":\"text\",\"bcc\":[\"bcc\"],\"cc\":[\"cc\"],\"reply_to\":[\"reply_to\"],\"last_event\":\"delivered\"}",
+        "value": {
+          "object": "email",
+          "id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+          "message_id": "<202301010000.4ef9a417@email.example.com>",
+          "to": ["delivered@resend.dev"],
+          "from": "Acme <onboarding@resend.dev>",
+          "created_at": "2023-04-03 22:13:42.674981+00",
+          "subject": "Hello World",
+          "html": "Congrats on sending your <strong>first email</strong>!",
+          "text": "text",
+          "bcc": ["bcc"],
+          "cc": ["cc"],
+          "reply_to": ["reply_to"],
+          "last_event": "delivered"
+        }
+      },
+      "probe": "lost-response"
+    },
+    {
+      "id": "behavior-1-response-decode",
+      "operationId": "emailsSend",
+      "kinds": [],
+      "request": {
+        "method": "POST",
+        "pathTemplate": "/emails",
+        "pathParameters": {},
+        "query": [],
+        "headers": {
+          "idempotency-key": "Idempotency-Key"
+        },
+        "body": {
+          "from": "from",
+          "to": "to",
+          "subject": "subject",
+          "bcc": "bcc",
+          "cc": "cc",
+          "reply_to": "reply_to",
+          "html": "html",
+          "text": "text",
+          "template": {
+            "id": "id-1",
+            "variables": {
+              "variableName": "Sign up now",
+              "variableName2": 123
+            }
+          },
+          "headers": {},
+          "scheduled_at": "2024-01-01T00:00:00Z",
+          "attachments": [
+            {
+              "content": "ZXhhbXBsZQ==",
+              "filename": "Example Name",
+              "path": "path",
+              "content_type": "content_type",
+              "content_id": "content-1"
+            }
+          ],
+          "tags": [
+            {
+              "name": "Example Name",
+              "value": "value"
+            }
+          ],
+          "topic_id": "topic-1"
+        },
+        "bodyKind": "json",
+        "contentType": "application/json",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "expect": {
+        "method": "POST",
+        "path": "/emails",
+        "query": "",
+        "url": "https://behavior.test/emails",
+        "headers": {
+          "idempotency-key": "Idempotency-Key",
+          "content-type": "application/json"
+        },
+        "bodyText": "{\"from\":\"from\",\"to\":\"to\",\"subject\":\"subject\",\"bcc\":\"bcc\",\"cc\":\"cc\",\"reply_to\":\"reply_to\",\"html\":\"html\",\"text\":\"text\",\"template\":{\"id\":\"id-1\",\"variables\":{\"variableName\":\"Sign up now\",\"variableName2\":123}},\"headers\":{},\"scheduled_at\":\"2024-01-01T00:00:00Z\",\"attachments\":[{\"content\":\"ZXhhbXBsZQ==\",\"filename\":\"Example Name\",\"path\":\"path\",\"content_type\":\"content_type\",\"content_id\":\"content-1\"}],\"tags\":[{\"name\":\"Example Name\",\"value\":\"value\"}],\"topic_id\":\"topic-1\"}",
+        "multipartFields": null
+      },
+      "response": {
+        "kind": "json",
+        "status": 200,
+        "mediaType": "application/json",
+        "body": "{\"truncated\": ",
+        "errorKind": "ResponseDecode"
+      },
+      "probe": "response-decode"
+    }
+  ]
+}
