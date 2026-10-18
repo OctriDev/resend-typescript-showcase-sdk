@@ -255,9 +255,9 @@ export interface SendEmailRequest {
    */
   text?: string;
   /**
-   * Optional API value serialized in the `template` wire field.
+   * Use a published template to send the email. If provided, do not include html or text.
    */
-  template?: EmailTemplateInput & unknown;
+  template?: EmailTemplateInput;
   /**
    * Custom headers to add to the email.
    */

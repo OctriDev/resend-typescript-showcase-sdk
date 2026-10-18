@@ -25,7 +25,7 @@ export const modelSchemasPart002: readonly (readonly [string, RuntimeSchema])[] 
   [
     "UpdateInboxOptions",
     parseRuntimeSchema(
-      '{"type":"object","properties":{"name":{"type":"string","minLength":1,"maxLength":64},"fromName":{"type":"string","maxLength":78}},"anyOf":[{"required":["name"]},{"required":["from_name"]}]}',
+      '{"type":"object","properties":{"name":{"type":"string","minLength":1,"maxLength":64},"fromName":{"type":"string","maxLength":78}}}',
     ),
   ],
 
@@ -55,7 +55,7 @@ export const modelSchemasPart002: readonly (readonly [string, RuntimeSchema])[] 
   [
     "UpdateInboxAgentOptions",
     parseRuntimeSchema(
-      '{"type":"object","properties":{"instructions":{"type":["string","null"],"minLength":1,"maxLength":4000},"tone":{"type":["string","null"]},"enabledActions":{"type":"array","items":{"type":"string"}}},"anyOf":[{"required":["instructions"]},{"required":["tone"]},{"required":["enabled_actions"]}]}',
+      '{"type":"object","properties":{"instructions":{"type":["string","null"],"minLength":1,"maxLength":4000},"tone":{"type":["string","null"]},"enabledActions":{"type":"array","items":{"type":"string"}}}}',
     ),
   ],
 
@@ -155,7 +155,7 @@ export const modelSchemasPart002: readonly (readonly [string, RuntimeSchema])[] 
   [
     "UpdateInboxThreadOptions",
     parseRuntimeSchema(
-      '{"type":"object","properties":{"read":{"type":"boolean"},"folder":{"type":"string"},"addLabelIds":{"type":"array","minItems":1,"maxItems":10,"items":{"type":"string","format":"uuid"}},"removeLabelIds":{"type":"array","minItems":1,"maxItems":10,"items":{"type":"string","format":"uuid"}}},"anyOf":[{"required":["read"]},{"required":["folder"]},{"required":["add_label_ids"]},{"required":["remove_label_ids"]}]}',
+      '{"type":"object","properties":{"read":{"type":"boolean"},"folder":{"type":"string"},"addLabelIds":{"type":"array","minItems":1,"maxItems":10,"items":{"type":"string","format":"uuid"}},"removeLabelIds":{"type":"array","minItems":1,"maxItems":10,"items":{"type":"string","format":"uuid"}}}}',
     ),
   ],
 
@@ -273,7 +273,7 @@ export const modelSchemasPart002: readonly (readonly [string, RuntimeSchema])[] 
   [
     "UpdateInboxDraftOptions",
     parseRuntimeSchema(
-      '{"type":"object","properties":{"to":{"oneOf":[{"type":"string"},{"type":"array","maxItems":50,"items":{"type":"string"}},{"type":"null"}]},"cc":{"oneOf":[{"type":"string"},{"type":"array","maxItems":50,"items":{"type":"string"}},{"type":"null"}]},"bcc":{"oneOf":[{"type":"string"},{"type":"array","maxItems":50,"items":{"type":"string"}},{"type":"null"}]},"subject":{"type":["string","null"],"minLength":1,"maxLength":2000},"html":{"type":["string","null"]},"text":{"type":["string","null"]},"attachments":{"type":["array","null"],"items":{"ref":"InboxDraftAttachmentInput"}}},"anyOf":[{"required":["to"]},{"required":["cc"]},{"required":["bcc"]},{"required":["subject"]},{"required":["text"]},{"required":["html"]},{"required":["attachments"]}]}',
+      '{"type":"object","properties":{"to":{"oneOf":[{"type":"string"},{"type":"array","maxItems":50,"items":{"type":"string"}},{"type":"null"}]},"cc":{"oneOf":[{"type":"string"},{"type":"array","maxItems":50,"items":{"type":"string"}},{"type":"null"}]},"bcc":{"oneOf":[{"type":"string"},{"type":"array","maxItems":50,"items":{"type":"string"}},{"type":"null"}]},"subject":{"type":["string","null"],"minLength":1,"maxLength":2000},"html":{"type":["string","null"]},"text":{"type":["string","null"]},"attachments":{"type":["array","null"],"items":{"ref":"InboxDraftAttachmentInput"}}}}',
     ),
   ],
 

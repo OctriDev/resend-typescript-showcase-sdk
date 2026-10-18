@@ -7089,8 +7089,8 @@
           "in": "body",
           "required": false,
           "nullable": false,
-          "type": "any",
-          "wireType": null,
+          "type": "EmailTemplateInput",
+          "wireType": "object",
           "declaredValue": null,
           "mediaTypes": ["application/json"]
         },
@@ -7222,8 +7222,8 @@
           "in": "body",
           "required": false,
           "nullable": false,
-          "type": "any",
-          "wireType": null,
+          "type": "EmailTemplateInput",
+          "wireType": "object",
           "declaredValue": null,
           "mediaTypes": ["application/json"]
         },
@@ -11941,26 +11941,7 @@
             "nullable": false,
             "items": null,
             "mapValue": null,
-            "variants": [
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              },
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              }
-            ]
+            "variants": null
           },
           "bodyShape": "fields",
           "fields": [
@@ -12097,35 +12078,7 @@
             "nullable": false,
             "items": null,
             "mapValue": null,
-            "variants": [
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              },
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              },
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              }
-            ]
+            "variants": null
           },
           "bodyShape": "fields",
           "fields": [
@@ -12289,71 +12242,7 @@
             "nullable": false,
             "items": null,
             "mapValue": null,
-            "variants": [
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              },
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              },
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              },
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              },
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              },
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              },
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              }
-            ]
+            "variants": null
           },
           "bodyShape": "fields",
           "fields": [
@@ -12806,44 +12695,7 @@
             "nullable": false,
             "items": null,
             "mapValue": null,
-            "variants": [
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              },
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              },
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              },
-              {
-                "type": "any",
-                "format": null,
-                "ref": null,
-                "nullable": false,
-                "items": null,
-                "mapValue": null,
-                "variants": null
-              }
-            ]
+            "variants": null
           },
           "bodyShape": "fields",
           "fields": [
@@ -33809,9 +33661,9 @@
         {
           "name": "template",
           "required": false,
-          "type": "any",
+          "type": "ref",
           "format": null,
-          "ref": null,
+          "ref": "EmailTemplateInput",
           "nullable": false,
           "items": null,
           "mapValue": null,
@@ -35920,35 +35772,7 @@
         "nullable": false,
         "items": null,
         "mapValue": null,
-        "variants": [
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          }
-        ]
+        "variants": null
       },
       "properties": [
         {
@@ -36043,71 +35867,7 @@
         "nullable": false,
         "items": null,
         "mapValue": null,
-        "variants": [
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          }
-        ]
+        "variants": null
       },
       "properties": [
         {
@@ -36578,26 +36338,7 @@
         "nullable": false,
         "items": null,
         "mapValue": null,
-        "variants": [
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          }
-        ]
+        "variants": null
       },
       "properties": [
         {
@@ -36673,44 +36414,7 @@
         "nullable": false,
         "items": null,
         "mapValue": null,
-        "variants": [
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          },
-          {
-            "type": "any",
-            "format": null,
-            "ref": null,
-            "nullable": false,
-            "items": null,
-            "mapValue": null,
-            "variants": null
-          }
-        ]
+        "variants": null
       },
       "properties": [
         {
@@ -46312,7 +46016,7 @@
           },
           {
             "name": "template",
-            "description": "Optional API value serialized in the `template` wire field."
+            "description": "Use a published template to send the email. If provided, do not include html or text."
           },
           {
             "name": "headers",

@@ -178,6 +178,10 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
       },
     },
   },
+  UpdateInboxOptions: {
+    name: { wire: "name" },
+    fromName: { wire: "from_name" },
+  },
   InboxAgent: {
     object: { wire: "object" },
     instructions: { wire: "instructions" },
@@ -186,6 +190,11 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
   },
   GetInboxAgentResponseSuccess: {
     object: { wire: "object" },
+    instructions: { wire: "instructions" },
+    tone: { wire: "tone" },
+    enabledActions: { wire: "enabled_actions" },
+  },
+  UpdateInboxAgentOptions: {
     instructions: { wire: "instructions" },
     tone: { wire: "tone" },
     enabledActions: { wire: "enabled_actions" },
@@ -237,6 +246,12 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     object: { wire: "object" },
     hasMore: { wire: "has_more" },
     data: { wire: "data", type: "InboxThreadSearchResult" },
+  },
+  UpdateInboxThreadOptions: {
+    read: { wire: "read" },
+    folder: { wire: "folder" },
+    addLabelIds: { wire: "add_label_ids" },
+    removeLabelIds: { wire: "remove_label_ids" },
   },
   InboxThreadEmail: {
     id: { wire: "id" },
@@ -389,29 +404,5 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     attachments: { wire: "attachments" },
     read: { wire: "read" },
     receivedAt: { wire: "received_at" },
-  },
-  InboxEventDraft: {
-    object: { wire: "object" },
-    id: { wire: "id" },
-    ["type"]: { wire: "type" },
-    to: { wire: "to" },
-    cc: { wire: "cc" },
-    bcc: { wire: "bcc" },
-    subject: { wire: "subject" },
-    threadId: { wire: "thread_id" },
-    replyToEmailId: { wire: "reply_to_email_id" },
-    emailId: { wire: "email_id" },
-    createdAt: { wire: "created_at" },
-    updatedAt: { wire: "updated_at" },
-    attachments: { wire: "attachments", type: "InboxDraftAttachment" },
-  },
-  InboxEventData: {
-    source: { wire: "source" },
-    inboxId: { wire: "inbox_id" },
-    inbox: { wire: "inbox", type: "Inbox" },
-  },
-  InboxDeletedEventData: {
-    source: { wire: "source" },
-    inboxId: { wire: "inbox_id" },
   },
 };

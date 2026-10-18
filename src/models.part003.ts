@@ -62,7 +62,7 @@ export function createListInboxesResponseSuccess(
 export function createUpdateInboxOptions(
   value: Types.UpdateInboxOptions,
 ): Types.UpdateInboxOptions {
-  return modelRuntime.validate(value, "UpdateInboxOptions");
+  return modelRuntime.validate({ ...value }, "UpdateInboxOptions");
 }
 
 /** Constructs a validated UpdateInboxResponseSuccess model value. */
@@ -95,7 +95,7 @@ export function createGetInboxAgentResponseSuccess(
 export function createUpdateInboxAgentOptions(
   value: Types.UpdateInboxAgentOptions,
 ): Types.UpdateInboxAgentOptions {
-  return modelRuntime.validate(value, "UpdateInboxAgentOptions");
+  return modelRuntime.validate({ ...value }, "UpdateInboxAgentOptions");
 }
 
 /** Constructs a validated UpdateInboxAgentResponseSuccess model value. */
@@ -201,7 +201,7 @@ export function createGetInboxThreadResponseSuccess(
 export function createUpdateInboxThreadOptions(
   value: Types.UpdateInboxThreadOptions,
 ): Types.UpdateInboxThreadOptions {
-  return modelRuntime.validate(value, "UpdateInboxThreadOptions");
+  return modelRuntime.validate({ ...value }, "UpdateInboxThreadOptions");
 }
 
 /** Constructs a validated UpdateInboxThreadResponseSuccess model value. */
@@ -330,7 +330,7 @@ export function createGetInboxDraftResponseSuccess(
 export function createUpdateInboxDraftOptions(
   value: Types.UpdateInboxDraftOptions,
 ): Types.UpdateInboxDraftOptions {
-  return modelRuntime.validate(value, "UpdateInboxDraftOptions");
+  return modelRuntime.validate({ ...value }, "UpdateInboxDraftOptions");
 }
 
 /** Constructs a validated UpdateInboxDraftResponseSuccess model value. */

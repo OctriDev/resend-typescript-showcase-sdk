@@ -45,7 +45,7 @@ const modelSchemas: Readonly<Record<string, RuntimeSchema>> = {
     required: ["from", "to", "subject"],
     properties: {
       to: { oneOf: [{ type: "array", minItems: 1, maxItems: 50 }] },
-      template: { allOf: [{ ref: "EmailTemplateInput" }] },
+      template: { ref: "EmailTemplateInput" },
     },
   },
   EmailTemplateInput: { type: "object", required: ["id"] },
@@ -700,7 +700,6 @@ const modelSchemas: Readonly<Record<string, RuntimeSchema>> = {
       name: { type: "string", minLength: 1, maxLength: 64 },
       fromName: { type: "string", maxLength: 78 },
     },
-    anyOf: [{ required: ["name"] }, { required: ["from_name"] }],
   },
   UpdateInboxResponseSuccess: {
     type: "object",
@@ -717,11 +716,6 @@ const modelSchemas: Readonly<Record<string, RuntimeSchema>> = {
   UpdateInboxAgentOptions: {
     type: "object",
     properties: { instructions: { type: ["string", "null"], minLength: 1, maxLength: 4000 } },
-    anyOf: [
-      { required: ["instructions"] },
-      { required: ["tone"] },
-      { required: ["enabled_actions"] },
-    ],
   },
   UpdateInboxAgentResponseSuccess: {
     type: "object",
@@ -848,12 +842,6 @@ const modelSchemas: Readonly<Record<string, RuntimeSchema>> = {
         items: { type: "string", format: "uuid" },
       },
     },
-    anyOf: [
-      { required: ["read"] },
-      { required: ["folder"] },
-      { required: ["add_label_ids"] },
-      { required: ["remove_label_ids"] },
-    ],
   },
   UpdateInboxThreadResponseSuccess: { ref: "InboxThreadSummary" },
   RemoveInboxThreadResponseSuccess: {
@@ -1017,15 +1005,6 @@ const modelSchemas: Readonly<Record<string, RuntimeSchema>> = {
       subject: { type: ["string", "null"], minLength: 1, maxLength: 2000 },
       attachments: { type: ["array", "null"], items: { ref: "InboxDraftAttachmentInput" } },
     },
-    anyOf: [
-      { required: ["to"] },
-      { required: ["cc"] },
-      { required: ["bcc"] },
-      { required: ["subject"] },
-      { required: ["text"] },
-      { required: ["html"] },
-      { required: ["attachments"] },
-    ],
   },
   UpdateInboxDraftResponseSuccess: { ref: "InboxDraft" },
   RemoveInboxDraftResponseSuccess: {

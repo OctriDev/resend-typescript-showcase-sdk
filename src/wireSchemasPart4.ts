@@ -4,6 +4,30 @@
 import type { WireSchema } from "./client";
 
 export const wireSchemasPart4: Record<string, WireSchema> = {
+  InboxEventDraft: {
+    object: { wire: "object" },
+    id: { wire: "id" },
+    ["type"]: { wire: "type" },
+    to: { wire: "to" },
+    cc: { wire: "cc" },
+    bcc: { wire: "bcc" },
+    subject: { wire: "subject" },
+    threadId: { wire: "thread_id" },
+    replyToEmailId: { wire: "reply_to_email_id" },
+    emailId: { wire: "email_id" },
+    createdAt: { wire: "created_at" },
+    updatedAt: { wire: "updated_at" },
+    attachments: { wire: "attachments", type: "InboxDraftAttachment" },
+  },
+  InboxEventData: {
+    source: { wire: "source" },
+    inboxId: { wire: "inbox_id" },
+    inbox: { wire: "inbox", type: "Inbox" },
+  },
+  InboxDeletedEventData: {
+    source: { wire: "source" },
+    inboxId: { wire: "inbox_id" },
+  },
   InboxThreadEmailEventData: {
     source: { wire: "source" },
     inboxId: { wire: "inbox_id" },
