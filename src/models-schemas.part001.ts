@@ -9,7 +9,7 @@ export const modelSchemasPart001: readonly (readonly [string, RuntimeSchema])[] 
   [
     "SendEmailRequest",
     parseRuntimeSchema(
-      '{"type":"object","required":["from","to","subject"],"properties":{"from":{"type":"string"},"to":{"oneOf":[{"type":"string"},{"type":"array","minItems":1,"maxItems":50,"items":{"type":"string"}}]},"subject":{"type":"string"},"bcc":{"oneOf":[{"type":"string"},{"type":"array","items":{"type":"string"}}]},"cc":{"oneOf":[{"type":"string"},{"type":"array","items":{"type":"string"}}]},"replyTo":{"oneOf":[{"type":"string"},{"type":"array","items":{"type":"string"}}]},"html":{"type":"string"},"text":{"type":"string"},"template":{"allOf":[{"ref":"EmailTemplateInput"},{}]},"headers":{"type":"object"},"scheduledAt":{"type":"string"},"attachments":{"type":"array","items":{"ref":"Attachment"}},"tags":{"type":"array","items":{"ref":"Tag"}},"topicId":{"type":"string"}}}',
+      '{"type":"object","required":["from","to","subject"],"properties":{"from":{"type":"string"},"to":{"oneOf":[{"type":"string"},{"type":"array","minItems":1,"maxItems":50,"items":{"type":"string"}}]},"subject":{"type":"string"},"bcc":{"oneOf":[{"type":"string"},{"type":"array","items":{"type":"string"}}]},"cc":{"oneOf":[{"type":"string"},{"type":"array","items":{"type":"string"}}]},"replyTo":{"oneOf":[{"type":"string"},{"type":"array","items":{"type":"string"}}]},"html":{"type":"string"},"text":{"type":"string"},"template":{"ref":"EmailTemplateInput"},"headers":{"type":"object"},"scheduledAt":{"type":"string"},"attachments":{"type":"array","items":{"ref":"Attachment"}},"tags":{"type":"array","items":{"ref":"Tag"}},"topicId":{"type":"string"}}}',
     ),
   ],
 

@@ -675,7 +675,7 @@ const modelSchemas: Readonly<Record<string, RuntimeSchema>> = {
   SendEmailRequest: {
     type: "object",
     required: ["from", "to", "subject"],
-    properties: { template: { allOf: [{ ref: "EmailTemplateInput" }] } },
+    properties: { template: { ref: "EmailTemplateInput" } },
   },
   SendEventRequest: { type: "object", required: ["event"] },
   SendInboxDraftResponseSuccess: { type: "object", required: ["id"] },
@@ -731,29 +731,12 @@ const modelSchemas: Readonly<Record<string, RuntimeSchema>> = {
   UpdateApiKeyRequest: { type: "object", required: ["name"] },
   UpdateContactTopicsOptions: { type: "object", required: ["topics"] },
   UpdateEventRequest: { type: "object", required: ["schema"], nullableRequired: ["schema"] },
-  UpdateInboxAgentOptions: {
-    type: "object",
-    anyOf: [
-      { required: ["instructions"] },
-      { required: ["tone"] },
-      { required: ["enabled_actions"] },
-    ],
-  },
   UpdateInboxAgentResponseSuccess: { type: "object", required: ["object", "id"] },
   UpdateInboxDraftOptions: {
     type: "object",
     properties: {
       attachments: { type: ["array", "null"], items: { ref: "InboxDraftAttachmentInput" } },
     },
-    anyOf: [
-      { required: ["to"] },
-      { required: ["cc"] },
-      { required: ["bcc"] },
-      { required: ["subject"] },
-      { required: ["text"] },
-      { required: ["html"] },
-      { required: ["attachments"] },
-    ],
   },
   UpdateInboxDraftResponseSuccess: {
     type: "object",
@@ -786,20 +769,7 @@ const modelSchemas: Readonly<Record<string, RuntimeSchema>> = {
     properties: { attachments: { type: "array", items: { ref: "InboxDraftAttachment" } } },
   },
   UpdateInboxLabelResponseSuccess: { type: "object", required: ["object", "id"] },
-  UpdateInboxOptions: {
-    type: "object",
-    anyOf: [{ required: ["name"] }, { required: ["from_name"] }],
-  },
   UpdateInboxResponseSuccess: { type: "object", required: ["object", "id"] },
-  UpdateInboxThreadOptions: {
-    type: "object",
-    anyOf: [
-      { required: ["read"] },
-      { required: ["folder"] },
-      { required: ["add_label_ids"] },
-      { required: ["remove_label_ids"] },
-    ],
-  },
   UpdateInboxThreadResponseSuccess: {
     type: "object",
     required: ["object", "id", "subject", "folder", "labels", "read"],
