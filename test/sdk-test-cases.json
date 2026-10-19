@@ -21,7 +21,7 @@
       "mediaType": "application/json",
       "kind": "json",
       "value": {
-        "from": "from",
+        "from": "user@example.com",
         "to": "to",
         "subject": "subject",
         "bcc": "bcc",

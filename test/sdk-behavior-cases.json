@@ -23,7 +23,7 @@
           "idempotency-key": "Idempotency-Key"
         },
         "body": {
-          "from": "from",
+          "from": "user@example.com",
           "to": "to",
           "subject": "subject",
           "bcc": "bcc",
@@ -74,7 +74,7 @@
           "idempotency-key": "Idempotency-Key",
           "content-type": "application/json"
         },
-        "bodyText": "{\"from\":\"from\",\"to\":\"to\",\"subject\":\"subject\",\"bcc\":\"bcc\",\"cc\":\"cc\",\"reply_to\":\"reply_to\",\"html\":\"html\",\"text\":\"text\",\"template\":{\"id\":\"id-1\",\"variables\":{\"variableName\":\"Sign up now\",\"variableName2\":123}},\"headers\":{},\"scheduled_at\":\"2024-01-01T00:00:00Z\",\"attachments\":[{\"content\":\"ZXhhbXBsZQ==\",\"filename\":\"Example Name\",\"path\":\"path\",\"content_type\":\"content_type\",\"content_id\":\"content-1\"}],\"tags\":[{\"name\":\"Example Name\",\"value\":\"value\"}],\"topic_id\":\"topic-1\"}",
+        "bodyText": "{\"from\":\"user@example.com\",\"to\":\"to\",\"subject\":\"subject\",\"bcc\":\"bcc\",\"cc\":\"cc\",\"reply_to\":\"reply_to\",\"html\":\"html\",\"text\":\"text\",\"template\":{\"id\":\"id-1\",\"variables\":{\"variableName\":\"Sign up now\",\"variableName2\":123}},\"headers\":{},\"scheduled_at\":\"2024-01-01T00:00:00Z\",\"attachments\":[{\"content\":\"ZXhhbXBsZQ==\",\"filename\":\"Example Name\",\"path\":\"path\",\"content_type\":\"content_type\",\"content_id\":\"content-1\"}],\"tags\":[{\"name\":\"Example Name\",\"value\":\"value\"}],\"topic_id\":\"topic-1\"}",
         "multipartFields": null
       },
       "response": {
@@ -2058,7 +2058,7 @@
           "idempotency-key": "Idempotency-Key"
         },
         "body": {
-          "from": "from",
+          "from": "user@example.com",
           "to": "to",
           "subject": "subject",
           "bcc": "bcc",
@@ -2109,7 +2109,7 @@
           "idempotency-key": "Idempotency-Key",
           "content-type": "application/json"
         },
-        "bodyText": "{\"from\":\"from\",\"to\":\"to\",\"subject\":\"subject\",\"bcc\":\"bcc\",\"cc\":\"cc\",\"reply_to\":\"reply_to\",\"html\":\"html\",\"text\":\"text\",\"template\":{\"id\":\"id-1\",\"variables\":{\"variableName\":\"Sign up now\",\"variableName2\":123}},\"headers\":{},\"scheduled_at\":\"2024-01-01T00:00:00Z\",\"attachments\":[{\"content\":\"ZXhhbXBsZQ==\",\"filename\":\"Example Name\",\"path\":\"path\",\"content_type\":\"content_type\",\"content_id\":\"content-1\"}],\"tags\":[{\"name\":\"Example Name\",\"value\":\"value\"}],\"topic_id\":\"topic-1\"}",
+        "bodyText": "{\"from\":\"user@example.com\",\"to\":\"to\",\"subject\":\"subject\",\"bcc\":\"bcc\",\"cc\":\"cc\",\"reply_to\":\"reply_to\",\"html\":\"html\",\"text\":\"text\",\"template\":{\"id\":\"id-1\",\"variables\":{\"variableName\":\"Sign up now\",\"variableName2\":123}},\"headers\":{},\"scheduled_at\":\"2024-01-01T00:00:00Z\",\"attachments\":[{\"content\":\"ZXhhbXBsZQ==\",\"filename\":\"Example Name\",\"path\":\"path\",\"content_type\":\"content_type\",\"content_id\":\"content-1\"}],\"tags\":[{\"name\":\"Example Name\",\"value\":\"value\"}],\"topic_id\":\"topic-1\"}",
         "multipartFields": null
       },
       "response": {
@@ -2188,7 +2188,7 @@
           "idempotency-key": "Idempotency-Key"
         },
         "body": {
-          "from": "from",
+          "from": "user@example.com",
           "to": "to",
           "subject": "subject",
           "bcc": "bcc",
@@ -2239,7 +2239,7 @@
           "idempotency-key": "Idempotency-Key",
           "content-type": "application/json"
         },
-        "bodyText": "{\"from\":\"from\",\"to\":\"to\",\"subject\":\"subject\",\"bcc\":\"bcc\",\"cc\":\"cc\",\"reply_to\":\"reply_to\",\"html\":\"html\",\"text\":\"text\",\"template\":{\"id\":\"id-1\",\"variables\":{\"variableName\":\"Sign up now\",\"variableName2\":123}},\"headers\":{},\"scheduled_at\":\"2024-01-01T00:00:00Z\",\"attachments\":[{\"content\":\"ZXhhbXBsZQ==\",\"filename\":\"Example Name\",\"path\":\"path\",\"content_type\":\"content_type\",\"content_id\":\"content-1\"}],\"tags\":[{\"name\":\"Example Name\",\"value\":\"value\"}],\"topic_id\":\"topic-1\"}",
+        "bodyText": "{\"from\":\"user@example.com\",\"to\":\"to\",\"subject\":\"subject\",\"bcc\":\"bcc\",\"cc\":\"cc\",\"reply_to\":\"reply_to\",\"html\":\"html\",\"text\":\"text\",\"template\":{\"id\":\"id-1\",\"variables\":{\"variableName\":\"Sign up now\",\"variableName2\":123}},\"headers\":{},\"scheduled_at\":\"2024-01-01T00:00:00Z\",\"attachments\":[{\"content\":\"ZXhhbXBsZQ==\",\"filename\":\"Example Name\",\"path\":\"path\",\"content_type\":\"content_type\",\"content_id\":\"content-1\"}],\"tags\":[{\"name\":\"Example Name\",\"value\":\"value\"}],\"topic_id\":\"topic-1\"}",
         "multipartFields": null
       },
       "response": {
