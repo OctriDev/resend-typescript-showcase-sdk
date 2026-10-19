@@ -2225,7 +2225,7 @@
         "fields": [],
         "example": [
           {
-            "from": "from",
+            "from": "user@example.com",
             "to": "to",
             "subject": "subject",
             "bcc": "bcc",
@@ -6940,7 +6940,7 @@
           "name": "Example Name",
           "segment_id": "segment-1",
           "audience_id": "audience-1",
-          "from": "from",
+          "from": "user@example.com",
           "subject": "subject",
           "reply_to": ["reply_to"],
           "preview_text": "Here are our announcements",
@@ -7261,7 +7261,7 @@
         "example": {
           "name": "Example Name",
           "alias": "alias",
-          "from": "from",
+          "from": "user@example.com",
           "subject": "subject",
           "reply_to": ["reply_to"],
           "html": "html",
@@ -8638,7 +8638,7 @@
           }
         ],
         "example": {
-          "from": "from",
+          "from": "user@example.com",
           "to": "to",
           "subject": "subject",
           "bcc": "bcc",
@@ -10005,7 +10005,7 @@
           "name": "Example Name",
           "audience_id": "audience-1",
           "segment_id": "segment-1",
-          "from": "from",
+          "from": "user@example.com",
           "subject": "subject",
           "reply_to": ["reply_to"],
           "preview_text": "preview_text",
@@ -10259,7 +10259,7 @@
           "current_version_id": "current_version-1",
           "name": "Example Name",
           "alias": "alias",
-          "from": "from",
+          "from": "user@example.com",
           "subject": "subject",
           "reply_to": ["reply_to"],
           "html": "html",
@@ -10388,7 +10388,7 @@
         "example": {
           "name": "Example Name",
           "alias": "alias",
-          "from": "from",
+          "from": "user@example.com",
           "subject": "subject",
           "reply_to": ["reply_to"],
           "html": "html",
