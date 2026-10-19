@@ -19,7 +19,7 @@ npm install ../resend-typescript-showcase-sdk
 
 ## Quickstart
 
-The example calls `client.domains.get` (GET `/domains/{domain_id}`) with example values for its required arguments.
+The example calls `client.emails.send` (POST `/emails`) with example values for its required arguments.
 
 ```ts
 import { Resend } from "@octridev/resend";
@@ -30,7 +30,11 @@ async function main() {
     baseUrl: "https://api.resend.com",
     auth: { bearerAuth: process.env.API_TOKEN! },
   });
-  const result = await client.domains.get({ domainId: "domain-1" });
+  const result = await client.emails.send({
+    from: "user@example.com",
+    to: "user@example.com",
+    subject: "subject",
+  });
   console.log(result);
 }
 
