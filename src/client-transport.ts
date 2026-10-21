@@ -76,7 +76,7 @@ const OPERATION_SECURITY: Readonly<Record<string, readonly (readonly string[])[]
 
   listGrants: [["bearerAuth"]],
 
-  revokeGrant: [["bearerAuth"]],
+  revokeOauthGrant: [["bearerAuth"]],
 
   templatesCreate: [["bearerAuth"]],
 

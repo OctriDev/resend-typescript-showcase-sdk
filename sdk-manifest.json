@@ -13600,8 +13600,8 @@
       ]
     },
     {
-      "id": "revokeGrant",
-      "wireOperationId": "revokeGrant",
+      "id": "revokeOauthGrant",
+      "wireOperationId": "revokeOauthGrant",
       "method": "delete",
       "path": "/oauth/grants/{oauth_grant_id}",
       "namespace": ["oauth"],
@@ -13613,7 +13613,7 @@
       "publicMethods": [
         {
           "mode": "normal",
-          "name": "revokeGrant"
+          "name": "revokeOauthGrant"
         }
       ],
       "requestModes": [],
@@ -39756,7 +39756,7 @@
         ]
       },
       {
-        "id": "revokeGrant",
+        "id": "revokeOauthGrant",
         "method": "delete",
         "path": "/oauth/grants/{oauth_grant_id}",
         "summary": "Revokes an OAuth grant, removing the authorization associated with it. Supply the grant's ID to identify which authorization to revoke. The response includes the revocation time and reason.",
