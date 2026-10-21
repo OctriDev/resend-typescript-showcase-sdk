@@ -47,7 +47,7 @@ export async function listGrants(
   );
 }
 
-export interface RevokeGrantParams {
+export interface RevokeOauthGrantParams {
   oauthGrantId: string;
 }
 
@@ -56,15 +56,15 @@ export interface RevokeGrantParams {
  *
  * @param oauthGrantId - The OAuth grant ID.
  */
-export async function revokeGrant(
+export async function revokeOauthGrant(
   config: ClientConfig,
-  { oauthGrantId }: RevokeGrantParams,
+  { oauthGrantId }: RevokeOauthGrantParams,
   requestOptions?: RequestOptions,
 ): Promise<RevokeOAuthGrantResponse> {
   const _resp = await sdkRequest<RevokeOAuthGrantResponse>({
     method: "DELETE",
     path: `/oauth/grants/${encodePathSegment(oauthGrantId)}`,
-    operationId: "revokeGrant",
+    operationId: "revokeOauthGrant",
     responseDecoder: "json",
     ...requestOptions,
     config,
@@ -91,9 +91,9 @@ export class OauthNamespace {
    * Revokes an OAuth grant, removing the authorization associated with it. Supply the grant's ID to identify which authorization to revoke. The response includes the revocation time and reason.
    */
   revokeGrant(
-    params: RevokeGrantParams,
+    params: RevokeOauthGrantParams,
     requestOptions?: RequestOptions,
-  ): ReturnType<typeof revokeGrant> {
-    return revokeGrant(this._config, params, requestOptions);
+  ): ReturnType<typeof revokeOauthGrant> {
+    return revokeOauthGrant(this._config, params, requestOptions);
   }
 }

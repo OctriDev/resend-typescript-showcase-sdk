@@ -3,9 +3,7 @@
 
 import type { InboxEventEmail, InboxEventSource } from "./inbox-event";
 
-import type { InboxThreadLabel } from "./inboxes-inbox.part001";
-
-import type { InboxThreadSummary } from "./inboxes-inbox.part002";
+import type { InboxThreadLabel, InboxThreadSummary } from "./inboxes-inbox-shared";
 
 /**
  * Typed representation of the `InboxThreadAssignedEvent` API schema.

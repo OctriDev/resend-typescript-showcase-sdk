@@ -3,7 +3,7 @@
 
 import type { InboxEventDraft, InboxEventEmail, InboxEventSource } from "./inbox-event";
 
-import type { InboxThreadSummary } from "./inboxes-inbox.part002";
+import type { InboxThreadSummary } from "./inboxes-inbox-shared";
 
 /**
  * Typed representation of the `InboxDraftCreatedEvent` API schema.

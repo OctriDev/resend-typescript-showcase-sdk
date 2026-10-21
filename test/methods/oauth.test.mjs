@@ -18,7 +18,7 @@ import {
 } from "../helpers/mock-sdk.mjs";
 import { configureClient } from "../../dist/client.js";
 import { SdkHttpError, SdkNetworkError, SdkResponseDecodeError } from "../../dist/errors.js";
-import { listGrants, revokeGrant } from "../../dist/methods/oauth.js";
+import { listGrants, revokeOauthGrant } from "../../dist/methods/oauth.js";
 
 // Assigned once the mock server has a port. Declared at module scope because
 // the call map below is built here too, and a config-first SDK's call
@@ -38,12 +38,12 @@ const CALL = {
     invoke: (bag) =>
       listGrants(config, { limit: bag["limit"], after: bag["after"], before: bag["before"] }),
   },
-  revokeGrant: {
-    route: "revokeGrant",
+  revokeOauthGrant: {
+    route: "revokeOauthGrant",
     endpoint: "DELETE /oauth/grants/{oauth_grant_id}",
     mediaType: null,
     renamedKeys: ["revoked_at", "revoked_reason"],
-    invoke: (bag) => revokeGrant(config, { oauthGrantId: bag["oauth_grant_id"] }),
+    invoke: (bag) => revokeOauthGrant(config, { oauthGrantId: bag["oauth_grant_id"] }),
   },
 };
 
